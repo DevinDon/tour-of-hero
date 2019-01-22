@@ -9,13 +9,15 @@ import { AppRoutingModule } from './module/routing.module';
 import { HeroListComponent } from './component/hero/hero-list/hero-list.component';
 import { FillWithPipe } from './other/pipe/fill-with.pipe';
 import { HeroDetailComponent } from './component/hero/hero-detail/hero-detail.component';
+import { MessageComponent } from './component/message/message.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeroListComponent,
     FillWithPipe,
-    HeroDetailComponent
+    HeroDetailComponent,
+    MessageComponent
   ],
   imports: [
     BrowserModule,
