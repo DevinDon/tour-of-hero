@@ -1,3 +1,11 @@
-<p>
-  message works!
-</p>
+<h2>Message</h2>
+
+<button mat-button [color]="'error'" (click)="messageService.clear()">
+  <mat-icon>delete_sweep</mat-icon><span>CLEAR</span>
+</button>
+
+<div *ngIf="messageService.message.length">
+  <div *ngFor="let message of messageService.message; trackBy:app.trackByID">
+    {{message}}
+  </div>
+</div>
