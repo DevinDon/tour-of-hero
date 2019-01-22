@@ -1,0 +1,38 @@
+{
+  "name": "app",
+  "version": "0.0.0",
+  "description": "APP package.",
+  "private": true,
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "build": "cd client && npm run build && cd ../server && npm run build",
+    "clean": "gulp clean",
+    "install": "cd client && npm i && cd ../server && npm i",
+    "pack": "npm run build && gulp pack",
+    "pack:only": "gulp pack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DevinDon/app-template.git"
+  },
+  "keywords": [
+    "server",
+    "client",
+    "typescript",
+    "docker"
+  ],
+  "author": "Devin Don <DevinDon@Foxmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/DevinDon/app-template/issues"
+  },
+  "homepage": "https://github.com/DevinDon/app-template#readme",
+  "devDependencies": {
+    "gulp": "^4.0.0",
+    "gulp-clean": "^0.4.0",
+    "typescript": "^3.2.4"
+  }
+}
