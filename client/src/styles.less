@@ -15,15 +15,11 @@ body {
 app-root {
   min-width: 80vw;
   min-height: 100vh;
-  .flexColumn(space-between, flex-start);
+  .flexColumn(flex-start, flex-start);
   font-family: "Consolas", "微软雅黑 Light", "微软雅黑", "黑体", sans-serif;
   overflow-x: hidden;
   overflow-y: auto;
   color: @colorDark;
-}
-
-router-outlet {
-  flex-grow: 1;
 }
 
 a, a:visited, a:hover, a:link, a:active {
@@ -37,15 +33,15 @@ a, .link {
   &:not(.button) {
     &::before {
       position: absolute;
-      bottom: -0.05rem;
+      top: -0.05rem;
       left: 0;
       content: "";
       background-color: @colorGray;
-      width: 100%;
+      width: 75%;
       height: 0.05rem;
     }
     &:hover::before {
-      width: 0;
+      width: 25%;
     }
     &::after {
       position: absolute;
@@ -54,7 +50,7 @@ a, .link {
       content: "";
       background-color: @colorGray;
       width: 0;
-      height: 0.1rem;
+      height: 0.15rem;
     }
     &:hover::after {
       width: 100%;
