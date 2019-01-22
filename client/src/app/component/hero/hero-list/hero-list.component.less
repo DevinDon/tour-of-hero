@@ -1,0 +1,37 @@
+@import "../../../../config.less";
+
+ul.heroes {
+  margin: 0;
+  padding: 0;
+  li {
+    .flexRow();
+    color: @colorLight;
+    cursor: pointer;
+    list-style-type: none;
+    margin: 1rem 0;
+    span.id {
+      background-color: @colorPrimary;
+      border-top-left-radius: 0.3rem;
+      border-bottom-left-radius: 0.3rem;
+      padding: 0.5rem 1rem;
+    }
+    span.name {
+      background-color: @colorGray;
+      border-top-right-radius: 0.3rem;
+      border-bottom-right-radius: 0.3rem;
+      padding: 0.5rem 1rem;
+      text-align: center;
+      width: 100%;
+    }
+    &:hover {
+      filter: brightness(75%);
+    }
+    &.selected {
+      border: 0.15rem @colorInfo dashed;
+      border-radius: 0.3rem;
+      span.id {
+        background-color: @colorSuccess;
+      }
+    }
+  }
+}

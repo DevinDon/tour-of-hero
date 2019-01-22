@@ -7,11 +7,13 @@ import { MatModule } from './module/mat.module';
 import { OtherModule } from './module/other.module';
 import { AppRoutingModule } from './module/routing.module';
 import { HeroListComponent } from './component/hero/hero-list/hero-list.component';
+import { FillWithPipe } from './other/pipe/fill-with.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeroListComponent
+    HeroListComponent,
+    FillWithPipe
   ],
   imports: [
     BrowserModule,
