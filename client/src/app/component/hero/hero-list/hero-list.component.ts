@@ -11,11 +11,16 @@ import { AppService } from 'src/app/service/app.service';
 export class HeroListComponent implements OnInit {
 
   heroes: Hero[] = HEROES;
+  selectedHero: Hero;
 
   constructor(
     public app: AppService
   ) { }
 
   ngOnInit() { }
+
+  onSelect(hero: Hero) {
+    this.selectedHero = hero;
+  }
 
 }

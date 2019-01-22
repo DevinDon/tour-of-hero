@@ -9,6 +9,7 @@ ul.heroes {
     cursor: pointer;
     list-style-type: none;
     margin: 1rem 0;
+    width: 15rem;
     span.id {
       background-color: @colorPrimary;
       border-top-left-radius: 0.3rem;
@@ -27,10 +28,9 @@ ul.heroes {
       filter: brightness(75%);
     }
     &.selected {
-      border: 0.15rem @colorInfo dashed;
-      border-radius: 0.3rem;
       span.id {
         background-color: @colorSuccess;
+        padding: 0.5rem 1.5rem;
       }
     }
   }
