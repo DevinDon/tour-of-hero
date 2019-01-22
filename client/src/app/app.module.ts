@@ -6,7 +6,7 @@ import { DialogModule } from './module/dialog.module';
 import { MatModule } from './module/mat.module';
 import { OtherModule } from './module/other.module';
 import { AppRoutingModule } from './module/routing.module';
-import { HeroListComponent } from './component/hero-list/hero-list.component';
+import { HeroListComponent } from './component/hero/hero-list/hero-list.component';
 
 @NgModule({
   declarations: [
