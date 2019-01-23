@@ -10,6 +10,7 @@ import { HeroListComponent } from './component/hero/hero-list/hero-list.componen
 import { FillWithPipe } from './other/pipe/fill-with.pipe';
 import { HeroDetailComponent } from './component/hero/hero-detail/hero-detail.component';
 import { MessageComponent } from './component/message/message.component';
+import { DashboardComponent } from './component/dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { MessageComponent } from './component/message/message.component';
     HeroListComponent,
     FillWithPipe,
     HeroDetailComponent,
-    MessageComponent
+    MessageComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
