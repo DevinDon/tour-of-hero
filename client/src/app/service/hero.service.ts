@@ -11,12 +11,18 @@ import { MessageService } from './message.service';
 })
 export class HeroService {
 
-  private address = 'http://localhost:8080/v1';
+  private api: string;
 
   constructor(
     private http: HttpClient,
     private messageService: MessageService
-  ) { }
+  ) {
+    if (location.hostname === 'localhost') {
+      this.api = 'http://localhost:8080/v1';
+    } else {
+      this.api = '';
+    }
+  }
 
   private logToMessageService(message: string): void {
     this.messageService.add(`Hero Service: ${message}`);
@@ -24,7 +30,7 @@ export class HeroService {
 
   addHero(hero: Hero): Observable<number> {
     return this.http
-      .post<Response<number>>(`${this.address}/hero/add`, hero)
+      .post<Response<number>>(`${this.api}/hero/add`, hero)
       .pipe(
         map(v => {
           this.logToMessageService(v.status.message);
@@ -35,7 +41,7 @@ export class HeroService {
 
   deleteHero(id: number): Observable<number> {
     return this.http
-      .delete<Response<number>>(`${this.address}/hero/delete`, { params: { id: String(id) } })
+      .delete<Response<number>>(`${this.api}/hero/delete`, { params: { id: String(id) } })
       .pipe(
         map(v => {
           this.logToMessageService(v.status.message);
@@ -46,7 +52,7 @@ export class HeroService {
 
   getHero(id: number): Observable<Hero> {
     return this.http
-      .get<Response<Hero>>(`${this.address}/hero`, { params: { id: String(id) } })
+      .get<Response<Hero>>(`${this.api}/hero`, { params: { id: String(id) } })
       .pipe(
         map(v => {
           if (v.status.code) {
@@ -61,7 +67,7 @@ export class HeroService {
 
   getHeroes(): Observable<Hero[]> {
     return this.http
-      .get<Response<Hero[]>>(`${this.address}/heroes`)
+      .get<Response<Hero[]>>(`${this.api}/heroes`)
       .pipe(
         map(v => {
           if (v.status.code) {
@@ -76,7 +82,7 @@ export class HeroService {
 
   getHeroesByName(name: string): Observable<Hero[]> {
     return this.http
-      .get<Response<Hero[]>>(`${this.address}/heroes`, { params: { name } })
+      .get<Response<Hero[]>>(`${this.api}/heroes`, { params: { name } })
       .pipe(
         map(v => {
           if (v.status.code) {
@@ -91,7 +97,7 @@ export class HeroService {
 
   updateHero(hero: Hero): Observable<number> {
     return this.http
-      .put<Response<number>>(`${this.address}/hero/update`, hero)
+      .put<Response<number>>(`${this.api}/hero/update`, hero)
       .pipe(
         map(v => {
           this.logToMessageService(v.status.message);
