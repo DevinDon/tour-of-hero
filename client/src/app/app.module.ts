@@ -11,6 +11,7 @@ import { FillWithPipe } from './other/pipe/fill-with.pipe';
 import { HeroDetailComponent } from './component/hero/hero-detail/hero-detail.component';
 import { MessageComponent } from './component/message/message.component';
 import { DashboardComponent } from './component/dashboard/dashboard.component';
+import { HeroSearchComponent } from './component/hero/hero-search/hero-search.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { DashboardComponent } from './component/dashboard/dashboard.component';
     FillWithPipe,
     HeroDetailComponent,
     MessageComponent,
-    DashboardComponent
+    DashboardComponent,
+    HeroSearchComponent
   ],
   imports: [
     BrowserModule,
