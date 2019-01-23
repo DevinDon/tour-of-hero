@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Hero } from 'src/app/other/@types';
-import { AppService } from 'src/app/service/app.service';
+import { APPService } from 'src/app/service/app.service';
 import { HeroService } from 'src/app/service/hero.service';
 
 @Component({
@@ -14,7 +14,7 @@ export class HeroListComponent implements OnInit {
   selectedHero: Hero;
 
   constructor(
-    public app: AppService,
+    public app: APPService,
     private heroService: HeroService
   ) { }
 

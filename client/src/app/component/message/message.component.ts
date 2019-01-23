@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AppService } from 'src/app/service/app.service';
+import { APPService } from 'src/app/service/app.service';
 import { MessageService } from 'src/app/service/message.service';
 
 @Component({
@@ -10,7 +10,7 @@ import { MessageService } from 'src/app/service/message.service';
 export class MessageComponent implements OnInit {
 
   constructor(
-    public app: AppService,
+    public app: APPService,
     public messageService: MessageService
   ) { }
 
