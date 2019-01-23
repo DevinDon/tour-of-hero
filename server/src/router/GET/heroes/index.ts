@@ -12,9 +12,9 @@ export const heroes: Middleware = async (c, next) => {
   };
   let content;
   if (request.name) {
-    content = await Hero.find({ where: `"name" LIKE '%${request.name}%'` });
+    content = await Hero.find({ where: `"name" LIKE '%${request.name}%'`, order: { id: 'ASC' } });
   } else {
-    content = await Hero.find({ take: 100 });
+    content = await Hero.find({ take: 100, order: { id: 'ASC' } });
   }
   c.body = generateResponse<Content>({ content });
 };
