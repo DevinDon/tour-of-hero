@@ -3,7 +3,7 @@ import Hero from '../../../entity/hero.entity';
 import { generateResponse } from '../../function';
 
 type Request = Partial<Hero>;
-type Content = string;
+type Content = number;
 
 export const hero$update: Middleware = async (c, next) => {
   next();
@@ -13,7 +13,10 @@ export const hero$update: Middleware = async (c, next) => {
   };
   await Hero.update({ id: request.id }, request);
   c.body = generateResponse<Content>({
-    content: 'Update successfully.'
+    status: {
+      message: `Update successfully, ID: ${request.id}`
+    },
+    content: request.id
   });
 };
 
