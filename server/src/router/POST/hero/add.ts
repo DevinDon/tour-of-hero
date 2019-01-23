@@ -3,7 +3,7 @@ import Hero from '../../../entity/hero.entity';
 import { generateResponse } from '../../function';
 
 type Request = Partial<Hero>;
-type Content = string;
+type Content = number;
 
 export const hero$add: Middleware = async (c, next) => {
   next();
@@ -12,7 +12,10 @@ export const hero$add: Middleware = async (c, next) => {
   };
   const result = await Hero.insert(request);
   c.body = generateResponse<Content>({
-    content: `Added a new hero, ID: ${result.identifiers[0] && result.identifiers[0].id}`
+    status: {
+      message: `Added a new hero, ID: ${result.identifiers[0] && result.identifiers[0].id}`
+    },
+    content: result.identifiers[0] && result.identifiers[0].id
   });
 };
 
