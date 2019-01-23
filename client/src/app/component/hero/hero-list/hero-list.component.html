@@ -7,7 +7,9 @@
 </div>
 
 <div class="heroes">
-  <a class="hero" *ngFor="let hero of heroes; trackBy:app.trackByID" [routerLink]="[ '/detail', hero.id ]">
-    <span class="id">{{hero.id | fillWith:2}}</span><span class="name">{{hero.name}}</span>
-  </a>
+  <div class="hero" *ngFor="let hero of heroes; trackBy:app.trackByID">
+    <span class="id">{{hero.id | fillWith:2}}</span>
+    <a class="name" [routerLink]="[ '/detail', hero.id ]">{{hero.name}}</a>
+    <span class="delete" (click)="deleteHero(hero.id)">X</span>
+  </div>
 </div>

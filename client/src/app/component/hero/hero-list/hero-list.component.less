@@ -6,23 +6,28 @@
   > .hero {
     .flexRow();
     color: @colorLight;
-    cursor: pointer;
     list-style-type: none;
     margin: 1rem 0;
-    width: 15rem;
-    > span.id {
+    width: 17rem;
+    > .id {
       background-color: @colorPrimary;
       border-top-left-radius: 0.2rem;
       border-bottom-left-radius: 0.2rem;
       padding: 0.5rem 1rem;
     }
-    > span.name {
+    > .name {
       background-color: @colorGray;
-      border-top-right-radius: 0.2rem;
-      border-bottom-right-radius: 0.2rem;
       padding: 0.5rem 1rem;
       text-align: center;
-      width: 100%;
+      flex-grow: 1;
+    }
+    > .delete {
+      background-color: @colorError;
+      border-top-right-radius: 0.2rem;
+      border-bottom-right-radius: 0.2rem;
+      cursor: pointer;
+      padding: 0.5rem;
+      text-align: center;
     }
     &:hover {
       > span.id {
