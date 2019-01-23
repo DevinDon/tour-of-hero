@@ -1,8 +1,8 @@
 {
   "database": {
     "type": "postgres",
-    "host": "app-postgres",
-    "port": 5432,
+    "host": "192.168.1.192",
+    "port": 15432,
     "username": "app",
     "password": "app",
     "database": "app",
