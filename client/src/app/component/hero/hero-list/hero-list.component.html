@@ -1,6 +1,6 @@
 <h2>Heroes</h2>
-<ul class="heroes">
-  <li *ngFor="let hero of heroes; trackBy:app.trackByID" (click)="onSelect(hero)" [ngClass]="{'selected': (selectedHero && selectedHero.id) === hero.id}">
+<div class="heroes">
+  <a class="hero" *ngFor="let hero of heroes; trackBy:app.trackByID" [routerLink]="[ '/detail', hero.id ]">
     <span class="id">{{hero.id | fillWith:2}}</span><span class="name">{{hero.name}}</span>
-  </li>
-</ul>
+  </a>
+</div>
