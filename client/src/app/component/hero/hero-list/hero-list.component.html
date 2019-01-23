@@ -2,7 +2,7 @@
 
 <div>
   <label for="hero-name">Hero Name: </label>
-  <input id="hero-name" placeholder="Hero Name" type="text" [(ngModel)]="name">
+  <input autocomplete="off" id="hero-name" placeholder="Hero Name" type="text" [(ngModel)]="name">
   <button class="button" (click)="addHero()" [disabled]="!name">ADD</button>
 </div>
 

@@ -5,7 +5,7 @@
   </div>
   <div>
     <label for="hero-name">Name: </label>
-    <input id="hero-name" placeholder="Hero Name" type="text" [(ngModel)]="hero.name">
+    <input autocomplete="off" id="hero-name" placeholder="Hero Name" type="text" [(ngModel)]="hero.name">
   </div>
   <button class="button" (click)="updateThisHero()">SAVE</button>
   <button class="button" (click)="location.back()">BACK</button>
