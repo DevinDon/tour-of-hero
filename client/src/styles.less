@@ -20,6 +20,9 @@ app-root {
   overflow-x: hidden;
   overflow-y: auto;
   color: @colorDark;
+  > * {
+    width: 100%;
+  }
 }
 
 a, a:visited, a:hover, a:link, a:active {
@@ -35,15 +38,16 @@ a, .link {
       color: @colorGray;
     }
     &::after {
-      position: absolute;
+      background-color: @colorPrimary;
       bottom: -0.15rem;
-      left: 0;
       content: "";
-      background-color: @colorGray;
-      width: 0;
       height: 0.15rem;
+      left: 0;
+      position: absolute;
+      width: 0;
     }
     &:hover::after {
+      background-color: @colorGray;
       width: 100%;
     }
   }
