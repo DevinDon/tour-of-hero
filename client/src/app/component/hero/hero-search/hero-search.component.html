@@ -4,6 +4,4 @@
 <input id="name" placeholder="Search Name" type="text" [(ngModel)]="name">
 <button class="button" (click)="searchHeroes()" [(ngModel)]="name">SEARCH</button>
 
-<div class="result">
-
-</div>
+<app-hero-list [(heroes)]="heroes"></app-hero-list>
