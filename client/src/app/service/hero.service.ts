@@ -18,6 +18,14 @@ export class HeroService {
     this.messageService.add(`Hero Service: ${message}`);
   }
 
+  getHero(id: number): Observable<Hero> {
+    return of(HEROES.find(v => v.id === id))
+      .pipe(
+        delay(500),
+        tap(v => this.logToMessageService(`Fetched hero, ID: ${id}.`))
+      );
+  }
+
   getHeroes(): Observable<Hero[]> {
     return of(HEROES)
       .pipe(

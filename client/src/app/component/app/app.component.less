@@ -1,0 +1,16 @@
+@import "../../../config.less";
+
+nav {
+  .flexRow(flex-start);
+  > a {
+    background-color: @colorPrimary;
+    border-radius: 0.2rem;
+    color: @colorLight;
+    margin: 0.25rem 0.5rem;
+    padding: 0.5rem 1rem;
+    &:hover {
+      margin: 0;
+      padding: 0.75rem 1.5rem;
+    }
+  }
+}
