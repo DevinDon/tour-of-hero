@@ -1,4 +1,11 @@
 <h2>Heroes</h2>
+
+<div>
+  <label for="hero-name">Hero Name: </label>
+  <input id="hero-name" placeholder="Hero Name" type="text" [(ngModel)]="name">
+  <button class="button" (click)="addHero()" [disabled]="!name">ADD</button>
+</div>
+
 <div class="heroes">
   <a class="hero" *ngFor="let hero of heroes; trackBy:app.trackByID" [routerLink]="[ '/detail', hero.id ]">
     <span class="id">{{hero.id | fillWith:2}}</span><span class="name">{{hero.name}}</span>

@@ -10,6 +10,7 @@ import { HeroService } from 'src/app/service/hero.service';
 })
 export class HeroListComponent implements OnInit {
 
+  name: string;
   heroes: Hero[];
 
   constructor(
@@ -19,6 +20,13 @@ export class HeroListComponent implements OnInit {
 
   ngOnInit() {
     this.getHeroes();
+  }
+
+  addHero(): void {
+    const name = this.name;
+    this.heroService
+      .addHero({ id: 0, name })
+      .subscribe(v => this.heroes.push({ id: v, name }));
   }
 
   getHeroes(): void {
