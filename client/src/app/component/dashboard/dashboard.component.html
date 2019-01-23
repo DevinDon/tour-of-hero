@@ -1,6 +1,6 @@
 <h3>Top Heroes</h3>
 <div class="board">
-  <mat-card *ngFor="let hero of heroes; trackBy:app.trackByID">
-    <mat-card-title>{{hero.name}} </mat-card-title>
-  </mat-card>
+  <div class="card" *ngFor="let hero of heroes; trackBy:app.trackByID">
+    <h4>{{hero.name}}</h4>
+  </div>
 </div>

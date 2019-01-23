@@ -2,4 +2,15 @@
 
 .board {
   .flexRow(space-evenly);
+  .card {
+    .flexColumn(center);
+    background-color: @colorPrimary;
+    color: @colorLight;
+    cursor: pointer;
+    height: 6.18rem;
+    width: 10rem;
+    &:hover {
+      filter: brightness(75%);
+    }
+  }
 }
