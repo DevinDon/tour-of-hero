@@ -20,7 +20,7 @@ export class HeroService {
     if (location.hostname === 'localhost') {
       this.api = 'http://localhost:8080/v1';
     } else {
-      this.api = '';
+      this.api = 'api/v1';
     }
   }
 
