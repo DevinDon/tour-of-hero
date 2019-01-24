@@ -3,7 +3,6 @@
   "version": "0.0.0",
   "description": "APP package.",
   "private": true,
-  "main": "index.js",
   "directories": {
     "doc": "docs"
   },

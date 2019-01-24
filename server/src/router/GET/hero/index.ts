@@ -17,7 +17,7 @@ export const hero: Middleware = async (c, next) => {
   } else if (request.id) {
     content = await Hero.findOne(request.id);
   } else if (request.name) {
-    content = await Hero.findOne(request.name);
+    content = await Hero.findOne({ name: request.name });
   } else {
     content = undefined;
   }
