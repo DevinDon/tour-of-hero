@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Subject } from 'rxjs';
+import { of, Subject } from 'rxjs';
 import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
 import { Hero } from 'src/app/other/@types';
 import { HeroService } from 'src/app/service/hero.service';
@@ -25,7 +25,7 @@ export class HeroSearchComponent implements OnInit {
       .pipe(
         debounceTime(300),
         distinctUntilChanged(),
-        switchMap(v => this.heroService.getHeroesByName(v))
+        switchMap(v => v ? this.heroService.getHeroesByName(v) : of([]))
       )
       .subscribe(v => this.heroes = v);
   }
