@@ -1,9 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
-import { delay, tap, map } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { Hero, Response } from '../other/@types';
-import { HEROES } from '../other/config';
 import { MessageService } from './message.service';
 
 @Injectable({
