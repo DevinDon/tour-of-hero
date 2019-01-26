@@ -8,7 +8,7 @@ import { Observable, of } from 'rxjs';
 
 export class MockHeroService {
 
-  private mockHeroes: Hero[] = [
+  private MOCK_HEROES: Hero[] = [
     { id: 1, name: 'Test1' },
     { id: 2, name: 'Test2' }
   ];
@@ -18,7 +18,11 @@ export class MockHeroService {
   }
 
   getHero(id: number): Observable<Hero> {
-    return of(this.mockHeroes.find(v => v.id === id));
+    return of(this.MOCK_HEROES.find(v => v.id === id));
+  }
+
+  getHeroes(): Observable<Hero[]> {
+    return of(this.MOCK_HEROES);
   }
 
   updateHero(hero: Hero) {
