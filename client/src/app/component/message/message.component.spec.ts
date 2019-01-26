@@ -27,7 +27,7 @@ describe('MessageComponent', () => {
     fixture.detectChanges();
   });
 
-  it('MessageComponent should create', () => {
+  it('should be created', () => {
     expect(component).toBeTruthy();
   });
 

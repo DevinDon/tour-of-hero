@@ -1,7 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 import { APPService } from './app.service';
 
-
 describe('APPService', () => {
 
   let service: APPService;
@@ -10,7 +9,7 @@ describe('APPService', () => {
     TestBed.configureTestingModule({ providers: [APPService] });
   });
 
-  it('APPService should be created', () => {
+  it('should be created', () => {
     service = TestBed.get(APPService);
     expect(service).toBeTruthy();
   });

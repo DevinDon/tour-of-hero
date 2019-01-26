@@ -1,5 +1,4 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { DialogAlertComponent } from './dialog-alert.component';
 
 describe('DialogAlertComponent', () => {
@@ -20,7 +19,7 @@ describe('DialogAlertComponent', () => {
     fixture.detectChanges();
   });
 
-  it('DialogAlertComponent should create', () => {
+  it('should be created', () => {
     expect(component).toBeTruthy();
   });
 

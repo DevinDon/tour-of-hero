@@ -1,10 +1,10 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { StubHeroListComponent } from './hero-list/hero-list.component.spec';
-import { HeroComponent } from './hero.component';
 import { FormsModule } from '@angular/forms';
 import { APPService } from 'src/app/service/app.service';
 import { HeroService } from 'src/app/service/hero.service';
 import { MockHeroService } from 'src/app/service/hero.service.spec';
+import { StubHeroListComponent } from './hero-list/hero-list.component.spec';
+import { HeroComponent } from './hero.component';
 
 describe('HeroComponent', () => {
 
@@ -29,7 +29,7 @@ describe('HeroComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should be created', () => {
     expect(component).toBeTruthy();
   });
 

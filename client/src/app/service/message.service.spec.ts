@@ -1,5 +1,4 @@
 import { TestBed } from '@angular/core/testing';
-
 import { MessageService } from './message.service';
 
 describe('MessageService', () => {
@@ -10,7 +9,7 @@ describe('MessageService', () => {
     TestBed.configureTestingModule({ providers: [MessageService] });
   });
 
-  it('MessageService should be created', () => {
+  it('should be created', () => {
     service = TestBed.get(MessageService);
     expect(service).toBeTruthy();
   });

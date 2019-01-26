@@ -4,7 +4,7 @@ describe('FillWithPipe', () => {
 
   let pipe: FillWithPipe;
 
-  it('FillWithPipe create an instance', () => {
+  it('should create an instance', () => {
     pipe = new FillWithPipe();
     expect(pipe).toBeTruthy();
   });
