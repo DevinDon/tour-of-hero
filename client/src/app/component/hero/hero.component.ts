@@ -28,7 +28,7 @@ export class HeroComponent implements OnInit {
     this.heroService
       .addHero({ id: 0, name })
       .pipe(tap(v => this.name = ''))
-      .subscribe(v => this.heroes.push({ id: v, name }));
+      .subscribe(v => this.heroes.push(v));
   }
 
   getHeroes(): void {

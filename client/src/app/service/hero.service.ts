@@ -27,9 +27,9 @@ export class HeroService {
     this.messageService.add(`Hero Service: ${message}`);
   }
 
-  addHero(hero: Hero): Observable<number> {
+  addHero(hero: Hero): Observable<Hero> {
     return this.http
-      .post<Response<number>>(`${this.api}/hero/add`, hero)
+      .post<Response<Hero>>(`${this.api}/hero/add`, hero)
       .pipe(
         map(v => {
           this.logToMessageService(v.status.message);
