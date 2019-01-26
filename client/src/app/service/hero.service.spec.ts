@@ -4,6 +4,28 @@ import { HeroService } from './hero.service';
 import { MessageService } from './message.service';
 import { HttpClient } from '@angular/common/http';
 import { Hero } from '../other/@types';
+import { Observable, of } from 'rxjs';
+
+export class MockHeroService {
+
+  private mockHeroes: Hero[] = [
+    { id: 1, name: 'Test1' },
+    { id: 2, name: 'Test2' }
+  ];
+
+  deleteHero(id: number) {
+    return of(id);
+  }
+
+  getHero(id: number): Observable<Hero> {
+    return of(this.mockHeroes.find(v => v.id === id));
+  }
+
+  updateHero(hero: Hero) {
+    return of(hero.id);
+  }
+
+}
 
 describe('HeroService', () => {
 

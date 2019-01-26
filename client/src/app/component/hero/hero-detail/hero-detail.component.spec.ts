@@ -1,30 +1,11 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { HeroDetailComponent } from './hero-detail.component';
-import { HeroService } from 'src/app/service/hero.service';
-import { of, Observable } from 'rxjs';
-import { Hero } from 'src/app/other/@types';
-import { RouterTestingModule } from '@angular/router/testing';
 import { Location } from '@angular/common';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
+import { RouterTestingModule } from '@angular/router/testing';
 import { FillWithPipe } from 'src/app/other/pipe/fill-with.pipe';
-
-const mockHeroes: Hero[] = [
-  { id: 1, name: 'Test1' },
-  { id: 2, name: 'Test2' }
-];
-
-class MockHeroService {
-
-  getHero(id: number): Observable<Hero> {
-    return of(mockHeroes.find(v => v.id === id));
-  }
-
-  updateHero(hero: Hero) {
-    return of(hero.id);
-  }
-
-}
+import { HeroService } from 'src/app/service/hero.service';
+import { MockHeroService } from 'src/app/service/hero.service.spec';
+import { HeroDetailComponent } from './hero-detail.component';
 
 describe('HeroDetailComponent', () => {
 
