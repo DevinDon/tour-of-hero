@@ -1,10 +1,10 @@
+import { HttpClient } from '@angular/common/http';
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
-
+import { Observable, of } from 'rxjs';
+import { Hero, Response } from '../other/@types';
 import { HeroService } from './hero.service';
 import { MessageService } from './message.service';
-import { HttpClient } from '@angular/common/http';
-import { Hero } from '../other/@types';
-import { Observable, of } from 'rxjs';
 
 export class MockHeroService {
 
@@ -44,23 +44,24 @@ describe('HeroService', () => {
 
   let service: HeroService;
   let httpClient: jasmine.SpyObj<HttpClient>;
+  let httpTestingController: HttpTestingController;
   let messageService: jasmine.SpyObj<MessageService>;
 
   beforeEach(() => {
-    const httpSpy = jasmine.createSpyObj('HttpClient', ['post', 'delete', 'get', 'put']);
-    const messageSpy = jasmine.createSpyObj('MessageService', ['message', 'add', 'clear']);
     TestBed.configureTestingModule({
+      imports: [HttpClientTestingModule],
       providers: [
         HeroService,
-        { provide: HttpClient, useValue: httpSpy },
-        { provide: MessageService, useValue: messageSpy }
+        HttpClient,
+        MessageService
       ]
     });
   });
 
-  it('HeroService, HttpClient & MessageService should be created', () => {
+  it('should be created', () => {
     service = TestBed.get(HeroService);
     httpClient = TestBed.get(HttpClient);
+    httpTestingController = TestBed.get(HttpTestingController);
     messageService = TestBed.get(MessageService);
     expect(service).toBeTruthy();
     expect(httpClient).toBeTruthy();
@@ -69,11 +70,18 @@ describe('HeroService', () => {
 
   it('#addHero should add a hero to server', done => {
     const hero: Hero = { id: 0, name: 'Test Hero' };
-    // service.addHero(hero).subscribe(v => {
-    //   expect(v).toBeGreaterThan(0);
-    // });
-    // expect
-    done();
-  });
+    httpClient.post<Response<Hero>>('http://localhost:8080/v1/hero/add', hero)
+      .subscribe(v => {
+        hero.id = v.content && v.content.id;
+        expect(v.content && v.content.id).toBeGreaterThan(0);
+        console.log(v);
+        console.log(`HTTP RESPONSE: ${JSON.stringify(hero)}`);
+        done();
+      });
+    const req = httpTestingController.expectOne('http://localhost:8080/v1/hero/add');
+    expect(req.request.method).toEqual('POST');
+    req.flush({ content: { id: hero.id + 1, name: hero.name } });
+    httpTestingController.verify();
+  }, 5000);
 
 });
