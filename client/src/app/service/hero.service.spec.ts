@@ -13,6 +13,15 @@ export class MockHeroService {
     { id: 2, name: 'Test2' }
   ];
 
+  addHero(hero: Hero): Observable<number> {
+    const newHero = {
+      id: this.MOCK_HEROES[this.MOCK_HEROES.length - 1].id + 1,
+      name: hero.name
+    };
+    this.MOCK_HEROES.push(newHero);
+    return of(newHero.id);
+  }
+
   deleteHero(id: number) {
     return of(id);
   }
