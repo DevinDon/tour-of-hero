@@ -1,16 +1,26 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { StubHeroListComponent } from './hero-list/hero-list.component.spec';
 import { HeroComponent } from './hero.component';
+import { FormsModule } from '@angular/forms';
+import { APPService } from 'src/app/service/app.service';
+import { HeroService } from 'src/app/service/hero.service';
+import { MockHeroService } from 'src/app/service/hero.service.spec';
 
 describe('HeroComponent', () => {
+
   let component: HeroComponent;
   let fixture: ComponentFixture<HeroComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ HeroComponent ]
+      imports: [FormsModule],
+      declarations: [HeroComponent, StubHeroListComponent],
+      providers: [
+        APPService,
+        { provide: HeroService, useClass: MockHeroService }
+      ]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
@@ -22,4 +32,5 @@ describe('HeroComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
 });
