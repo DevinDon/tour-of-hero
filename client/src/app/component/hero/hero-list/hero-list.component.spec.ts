@@ -1,11 +1,20 @@
+import { Component, Input } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { HeroListComponent } from './hero-list.component';
+import { RouterTestingModule } from '@angular/router/testing';
+import { Hero } from 'src/app/other/@types';
 import { FillWithPipe } from 'src/app/other/pipe/fill-with.pipe';
 import { APPService } from 'src/app/service/app.service';
 import { HeroService } from 'src/app/service/hero.service';
 import { MockHeroService } from 'src/app/service/hero.service.spec';
-import { RouterTestingModule } from '@angular/router/testing';
+import { HeroListComponent } from './hero-list.component';
+
+@Component({ selector: 'app-hero-list', template: '' })
+export class StubHeroListComponent {
+
+  @Input()
+  heroes: Hero[];
+
+}
 
 describe('HeroListComponent', () => {
 
