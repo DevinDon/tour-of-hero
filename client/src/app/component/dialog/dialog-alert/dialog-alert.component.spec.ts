@@ -3,14 +3,15 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { DialogAlertComponent } from './dialog-alert.component';
 
 describe('DialogAlertComponent', () => {
+
   let component: DialogAlertComponent;
   let fixture: ComponentFixture<DialogAlertComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ DialogAlertComponent ]
+      declarations: [DialogAlertComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
@@ -19,7 +20,8 @@ describe('DialogAlertComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('DialogAlertComponent should create', () => {
     expect(component).toBeTruthy();
   });
+
 });
