@@ -6,6 +6,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { DetailComponent } from './detail/detail.component';
 import { ListComponent } from './list/list.component';
 import { MaterialModule } from './module/material.module';
+import { RoutingModule } from './module/routing.module';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { MaterialModule } from './module/material.module';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    MaterialModule
+    MaterialModule,
+    RoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
