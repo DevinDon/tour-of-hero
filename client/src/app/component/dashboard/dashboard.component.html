@@ -1,6 +1,0 @@
-<h2>Top Heroes</h2>
-<div class="board">
-  <a class="card" *ngFor="let hero of heroes; trackBy:app.trackByID" [routerLink]="[ '/detail', hero.id ]">
-    <h4>{{hero.name}}</h4>
-  </a>
-</div>
