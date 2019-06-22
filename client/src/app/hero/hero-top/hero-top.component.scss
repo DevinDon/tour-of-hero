@@ -1,0 +1,13 @@
+section.list {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  > mat-card {
+    background-color: #a9c9cc;
+    cursor: pointer;
+    margin: 1rem;
+    width: 15rem;
+    height: 10rem;
+  }
+}

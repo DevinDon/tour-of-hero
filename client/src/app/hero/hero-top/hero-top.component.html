@@ -1,3 +1,16 @@
-<p>
-  hero-top works!
-</p>
+<h2>Top Heroes</h2>
+
+<section class="list">
+  <mat-card class="hero" *ngFor="let hero of heroes; trackBy: trackByFn" [routerLink]="['/hero', hero.id]">
+    <mat-card-header>
+      <mat-card-title>{{ hero.id }}</mat-card-title>
+      <mat-card-subtitle>{{ hero.name }}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      detail
+    </mat-card-content>
+    <!-- <mat-card-actions>
+      <button mat-button>OK</button>
+    </mat-card-actions> -->
+  </mat-card>
+</section>

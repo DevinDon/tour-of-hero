@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { HeroService } from '../hero.service';
+import { Hero } from '../hero.type';
 
 @Component({
   selector: 'app-hero-top',
@@ -7,9 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeroTopComponent implements OnInit {
 
-  constructor() { }
+  heroes: Hero[] = [];
+
+  constructor(
+    private service: HeroService
+  ) { }
 
   ngOnInit() {
+    this.service.getTop().subscribe(v => this.heroes = v);
+  }
+
+  trackByFn(index: number, item: Hero) {
+    return item.id;
   }
 
 }
