@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "tour-of-hero": {
+    "tour-of-heroes": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/tour-of-hero",
+            "outputPath": "dist/tour-of-heroes",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -63,18 +63,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "tour-of-hero:build"
+            "browserTarget": "tour-of-heroes:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "tour-of-hero:build:production"
+              "browserTarget": "tour-of-heroes:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "tour-of-hero:build"
+            "browserTarget": "tour-of-heroes:build"
           }
         },
         "test": {
@@ -112,16 +112,16 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "tour-of-hero:serve"
+            "devServerTarget": "tour-of-heroes:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "tour-of-hero:serve:production"
+              "devServerTarget": "tour-of-heroes:serve:production"
             }
           }
         }
       }
     }
   },
-  "defaultProject": "tour-of-hero"
+  "defaultProject": "tour-of-heroes"
 }
