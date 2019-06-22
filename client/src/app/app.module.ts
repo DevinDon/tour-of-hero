@@ -5,9 +5,10 @@ import { AppComponent } from './app.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { HeroDetailComponent } from './hero/hero-detail/hero-detail.component';
 import { HeroListComponent } from './hero/hero-list/hero-list.component';
-import { MaterialModule } from './module/material.module';
-import { RoutingModule } from './module/routing.module';
 import { HeroTopComponent } from './hero/hero-top/hero-top.component';
+import { MaterialModule } from './module/material.module';
+import { OtherModule } from './module/other.module';
+import { RoutingModule } from './module/routing.module';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { HeroTopComponent } from './hero/hero-top/hero-top.component';
     BrowserModule,
     BrowserAnimationsModule,
     MaterialModule,
-    RoutingModule
+    RoutingModule,
+    OtherModule
   ],
   providers: [],
   bootstrap: [AppComponent]
