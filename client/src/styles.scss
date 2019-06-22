@@ -1,1 +1,19 @@
-/* You can add global styles to this file, and also import other style files */
+@import "~material-icon-offline/style.css";
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  font-family: "Consolas", "微软雅黑", sans-serif;
+  form {
+    .mat-form-field-can-float.mat-form-field-should-float .mat-form-field-label,
+    .mat-form-field-empty.mat-form-field-label,
+    mat-placeholder,
+    .mat-hint,
+    .mat-error {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+    }
+  }
+}
