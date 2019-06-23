@@ -6,7 +6,8 @@ import {
   MatIconModule,
   MatInputModule,
   MatProgressBarModule,
-  MatSnackBarModule
+  MatSnackBarModule,
+  MatListModule
 } from '@angular/material';
 
 @NgModule({
@@ -16,6 +17,7 @@ import {
     MatFormFieldModule,
     MatIconModule,
     MatInputModule,
+    MatListModule,
     MatProgressBarModule,
     MatSnackBarModule
   ]
