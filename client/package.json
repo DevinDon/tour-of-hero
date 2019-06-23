@@ -1,5 +1,6 @@
 {
-  "name": "tour-of-heroes",
+  "name": "tour-of-heroes.client",
+  "description": "Tour of Heroes client end.",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
