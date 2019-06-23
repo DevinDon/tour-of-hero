@@ -7,13 +7,15 @@ import {
   MatInputModule,
   MatProgressBarModule,
   MatSnackBarModule,
-  MatListModule
+  MatListModule,
+  MatExpansionModule
 } from '@angular/material';
 
 @NgModule({
   exports: [
     MatButtonModule,
     MatCardModule,
+    MatExpansionModule,
     MatFormFieldModule,
     MatIconModule,
     MatInputModule,
