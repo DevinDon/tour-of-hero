@@ -6,11 +6,11 @@
 @import "./light.theme.scss";
 
 // Set font family.
-@include mat-core(mat-typography-config($font-family: '"Consolas", "微软雅黑 Light", "微软雅黑", "黑体", sans-serif'));
+@include mat-core(mat-typography-config($font-family: '"Consolas", "微软雅黑", "黑体", sans-serif'));
 
 // Set global styles.
 body {
-  font-family: "Consolas", "微软雅黑 Light", "微软雅黑", "黑体", sans-serif;
+  font-family: "Consolas", "微软雅黑", "黑体", sans-serif;
   font-size: 1rem;
   margin: 0;
   padding: 0;
