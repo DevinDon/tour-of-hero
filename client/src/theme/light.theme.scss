@@ -1,0 +1,16 @@
+@import "./function.scss";
+@import "./variable.scss";
+
+/** Light blue theme, blue + deep orange + red. */
+.light-blue-theme {
+  @include angular-material-theme(
+    mat-light-theme(mat-palette($mat-blue), mat-palette($mat-deep-orange), mat-palette($mat-red))
+  );
+}
+
+/** Light indigo theme, indigo + deep orange + red. */
+.light-indigo-theme {
+  @include angular-material-theme(
+    mat-light-theme(mat-palette($mat-indigo), mat-palette($mat-deep-orange), mat-palette($mat-red))
+  );
+}
