@@ -4,17 +4,23 @@
 /** Light coless theme, white + blue + red. */
 .light-coless-theme {
   @include angular-material-theme(
-    mat-light-theme(mat-palette($color-white), mat-palette($mat-blue), mat-palette($mat-red))
+    mat-light-theme(mat-palette($color-white), mat-palette($color-black), mat-palette($mat-red))
   );
-  @include mat-button-theme(mat-light-theme(mat-palette($color-black), mat-palette($mat-blue), mat-palette($mat-red)));
+  @include mat-button-theme(
+    mat-light-theme(mat-palette($color-black), mat-palette($color-white), mat-palette($mat-red))
+  );
   @include mat-form-field-theme(
-    mat-light-theme(mat-palette($color-black), mat-palette($mat-blue), mat-palette($mat-red))
+    mat-light-theme(mat-palette($color-black), mat-palette($color-white), mat-palette($mat-red))
   );
-  @include mat-input-theme(mat-light-theme(mat-palette($color-black), mat-palette($mat-blue), mat-palette($mat-red)));
+  @include mat-input-theme(
+    mat-light-theme(mat-palette($color-black), mat-palette($color-white), mat-palette($mat-red))
+  );
   @include mat-progress-bar-theme-coless(
     mat-light-theme(mat-palette($color-white), mat-palette($color-black), mat-palette($mat-red))
   );
-  @include mat-select-theme(mat-light-theme(mat-palette($color-black), mat-palette($mat-blue), mat-palette($mat-red)));
+  @include mat-select-theme(
+    mat-light-theme(mat-palette($color-black), mat-palette($color-white), mat-palette($mat-red))
+  );
 }
 
 /** Dark coless theme, black + teal + red. */

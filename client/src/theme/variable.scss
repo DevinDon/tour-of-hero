@@ -1,24 +1,28 @@
+$color-hex-white: #ffffff;
+$color-hex-grey: #dfe4ea;
+$color-hex-black: #2f3542;
+
 /** White color, #fff. */
 $color-white: (
-  100: white,
-  500: white,
-  700: white,
+  100: $color-hex-white,
+  500: $color-hex-white,
+  700: $color-hex-white,
   contrast: (
-    100: $dark-primary-text,
-    500: $dark-primary-text,
-    700: $dark-primary-text
+    100: $color-hex-black,
+    500: $color-hex-black,
+    700: $color-hex-black
   )
 );
 
 /** Black color, #303030. */
 $color-black: (
-  100: #444444,
-  500: #303030,
-  700: #161616,
+  100: $color-hex-black,
+  500: $color-hex-black,
+  700: $color-hex-black,
   contrast: (
-    100: $light-primary-text,
-    500: $light-primary-text,
-    700: $light-primary-text
+    100: $color-hex-white,
+    500: $color-hex-white,
+    700: $color-hex-white
   )
 );
 
