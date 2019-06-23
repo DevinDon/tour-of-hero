@@ -1,0 +1,80 @@
+@import "~@angular/material/theming";
+@import "./function.scss";
+@import "./variable.scss";
+@import "./coless.theme.scss";
+@import "./dark.theme.scss";
+@import "./light.theme.scss";
+
+// Set font family.
+@include mat-core(mat-typography-config($font-family: '"Consolas", "微软雅黑 Light", "微软雅黑", "黑体", sans-serif'));
+
+// Set global styles.
+body {
+  font-family: "Consolas", "微软雅黑 Light", "微软雅黑", "黑体", sans-serif;
+  font-size: 1rem;
+  margin: 0;
+  padding: 0;
+  .mat-form-field-can-float.mat-form-field-should-float .mat-form-field-label,
+  .mat-form-field-empty.mat-form-field-label,
+  mat-placeholder,
+  .mat-hint,
+  .mat-error {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+  .mat-raised-button,
+  .mat-button,
+  .mat-stroked-button,
+  .mat-datepicker-content,
+  .mat-dialog-container,
+  .mat-card,
+  .mat-datepicker-content,
+  .mat-dialog-container,
+  .mat-expansion-panel,
+  .mat-form-field-flex,
+  .mat-menu-panel,
+  .mat-select-panel,
+  .mat-snack-bar-container,
+  .mat-tooltip,
+  .mat-button-toggle-group-appearance-standard,
+  .mat-button-toggle-standalone.mat-button-toggle-appearance-standard {
+    border-radius: 2px;
+  }
+}
+
+// Set transition animation.
+body {
+  *,
+  *:hover {
+    @include transition();
+  }
+  .cdk-overlay-pane,
+  mat-sidenav {
+    transition: unset;
+  }
+}
+
+// Set scroll bar.
+::-webkit-scrollbar {
+  width: 0;
+}
+// ::-webkit-scrollbar-track {
+//   background-color: #00000000;
+// }
+// ::-webkit-scrollbar-thumb {
+//   background: black;
+//   background-image: -webkit-linear-gradient(
+//     45deg,
+//     rgba(255, 255, 255, 0.2) 25%,
+//     transparent 25%,
+//     transparent 50%,
+//     rgba(255, 255, 255, 0.2) 50%,
+//     rgba(255, 255, 255, 0.2) 75%,
+//     transparent 75%,
+//     transparent
+//   );
+// }
+// ::-webkit-scrollbar-track-piece {
+//   background-color: #00000000;
+// }
