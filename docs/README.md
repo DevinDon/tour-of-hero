@@ -1,3 +1,3 @@
-# Documents
+# Tour of Heroes
 
-This is the docs folder.
+Tour of Heroes, with [Angular](https://angular.io) & [Rester](https://www.npmjs.com/package/@rester/core).
