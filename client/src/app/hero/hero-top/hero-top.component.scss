@@ -1,13 +1,17 @@
+@import "../../../theme/variable.scss";
+
 section.list {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   flex-wrap: wrap;
   > mat-card {
-    background-color: #a9c9cc;
-    cursor: pointer;
+    background-color: $color-white-dark;
     margin: 1rem;
     width: 15rem;
     height: 10rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
   }
 }
