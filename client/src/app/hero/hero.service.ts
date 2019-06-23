@@ -22,7 +22,10 @@ export class HeroService {
     this.app.busy();
     return this.http
       .get<Hero[]>(HeroService.API$HEROES)
-      .pipe(finalize(() => this.app.free()));
+      .pipe(
+        delay(1000),
+        finalize(() => this.app.free())
+      );
   }
 
   getTop(total: number = 4): Observable<Hero[]> {
@@ -30,7 +33,7 @@ export class HeroService {
     return this.http
       .get<Hero[]>(HeroService.API$HEROES)
       .pipe(
-        delay(1500),
+        delay(500),
         map(heroes => heroes.slice(0, total)),
         finalize(() => this.app.free())
       );
@@ -41,6 +44,7 @@ export class HeroService {
     return this.http
       .get<Hero[]>(HeroService.API$HEROES)
       .pipe(
+        delay(200),
         mergeAll(),
         filter(hero => hero.id === id),
         finalize(() => this.app.free())
