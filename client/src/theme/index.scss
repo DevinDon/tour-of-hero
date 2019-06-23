@@ -41,6 +41,9 @@ body {
   .mat-button-toggle-standalone.mat-button-toggle-appearance-standard {
     border-radius: 2px;
   }
+  .mat-button.mat-primary {
+    font-weight: bold;
+  }
 }
 
 // Set transition animation.
