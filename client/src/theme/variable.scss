@@ -1,0 +1,57 @@
+/** White color, #fff. */
+$color-white: (
+  100: white,
+  500: white,
+  700: white,
+  contrast: (
+    100: $dark-primary-text,
+    500: $dark-primary-text,
+    700: $dark-primary-text
+  )
+);
+
+/** Black color, #303030. */
+$color-black: (
+  100: #444444,
+  500: #303030,
+  700: #161616,
+  contrast: (
+    100: $light-primary-text,
+    500: $light-primary-text,
+    700: $light-primary-text
+  )
+);
+
+// /** Background palette for light themes. */
+// $mat-light-theme-background: (
+//   status-bar: map_get($color-black, 300),
+//   app-bar: map_get($color-black, 100),
+//   background: map_get($color-black, 50),
+//   hover: rgba(black, 0.04),
+//   dialog: white,
+//   disabled-button: rgba(black, 0.12),
+//   raised-button: white,
+//   focused-button: $dark-focused,
+//   selected-button: map_get($color-black, 300),
+//   selected-disabled-button: map_get($color-black, 400),
+//   disabled-button-toggle: map_get($color-black, 200),
+//   unselected-chip: map_get($color-black, 300),
+//   disabled-list-option: map_get($color-black, 200)
+// );
+
+// // Background palette for light themes.
+// $mat-light-theme-background: (
+//   status-bar: map_get($mat-grey, 300),
+//   app-bar: map_get($mat-grey, 100),
+//   background: map_get($mat-grey, 50),
+//   hover: rgba(black, 0.04),
+//   dialog: white,
+//   disabled-button: rgba(black, 0.12),
+//   raised-button: white,
+//   focused-button: $dark-focused,
+//   selected-button: map_get($mat-grey, 300),
+//   selected-disabled-button: map_get($mat-grey, 400),
+//   disabled-button-toggle: map_get($mat-grey, 200),
+//   unselected-chip: map_get($mat-grey, 300),
+//   disabled-list-option: map_get($mat-grey, 200)
+// );
