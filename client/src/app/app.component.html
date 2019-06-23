@@ -1,9 +1,15 @@
-<mat-progress-bar class="top" mode="indeterminate" *ngIf="service.status.loading"></mat-progress-bar>
-<h1>{{ title }}</h1>
+<mat-progress-bar class="top" color="primary" mode="indeterminate" *ngIf="app.status.loading"></mat-progress-bar>
 
-<nav>
-  <a [routerLink]="[ '/dashboard' ]">Dashboard</a>
-  <a [routerLink]="[ '/hero/list' ]">Hero List</a>
-</nav>
+<mat-expansion-panel>
+  <mat-expansion-panel-header>
+    <h1>{{ title }}</h1>
+  </mat-expansion-panel-header>
+  <mat-nav-list>
+    <a mat-list-item [ngClass]="{'selected': isPath('/dashboard')}" [routerLink]="[ '/dashboard' ]">Dashboard</a>
+    <a mat-list-item [ngClass]="{'selected': isPath('/hero/list')}" [routerLink]="[ '/hero/list' ]">Hero List</a>
+  </mat-nav-list>
+</mat-expansion-panel>
 
-<router-outlet></router-outlet>
+<section class="outlet">
+  <router-outlet></router-outlet>
+</section>

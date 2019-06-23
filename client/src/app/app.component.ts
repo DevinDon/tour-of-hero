@@ -1,5 +1,7 @@
+import { Location } from '@angular/common';
 import { Component } from '@angular/core';
 import { AppService } from './app.service';
+import { Platform } from '@angular/cdk/platform';
 
 @Component({
   selector: 'app-root',
@@ -11,7 +13,12 @@ export class AppComponent {
   title = 'Tour of Heroes';
 
   constructor(
-    protected service: AppService
+    protected app: AppService,
+    private location: Location
   ) { }
+
+  isPath(path: string) {
+    return this.location.path() === path;
+  }
 
 }
