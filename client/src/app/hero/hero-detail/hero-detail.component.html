@@ -1,3 +1,32 @@
-<p>
-  hero-detail works!
-</p>
+<h2>Hero Detail</h2>
+
+<ng-container *ngIf="hero">
+  <form class="column" [formGroup]="formGroup">
+    <mat-form-field>
+      <input matInput formControlName="id">
+      <mat-placeholder>
+        <mat-icon>bubble_chart</mat-icon> ID
+      </mat-placeholder>
+      <mat-hint>
+        <mat-icon>bubble_chart</mat-icon> Hero ID
+      </mat-hint>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput formControlName="name">
+      <mat-placeholder>
+        <mat-icon>face</mat-icon> Name
+      </mat-placeholder>
+      <mat-hint>
+        <mat-icon>face</mat-icon> Enter hero name
+      </mat-hint>
+      <mat-error *ngIf="formGroup.get('name').hasError('required')">
+        <mat-icon>block</mat-icon> Name is required
+      </mat-error>
+    </mat-form-field>
+    <div class="button">
+      <button mat-raised-button color="primary" (click)="save()"
+        [disabled]="app.status.loading || formGroup.invalid">Save</button>
+      <button mat-button (click)="back()">Cancel</button>
+    </div>
+  </form>
+</ng-container>
