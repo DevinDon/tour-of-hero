@@ -1,7 +1,6 @@
 @import "~@angular/material/theming";
 @import "./function.scss";
 @import "./variable.scss";
-@import "./coless.theme.scss";
 @import "./dark.theme.scss";
 @import "./light.theme.scss";
 
@@ -40,9 +39,6 @@ body {
   .mat-button-toggle-group-appearance-standard,
   .mat-button-toggle-standalone.mat-button-toggle-appearance-standard {
     border-radius: 2px;
-  }
-  .mat-button.mat-primary {
-    font-weight: bold;
   }
 }
 

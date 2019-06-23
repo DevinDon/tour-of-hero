@@ -10,6 +10,9 @@ $color-grey-dark: #ced6e0;
 $color-white: #ffffff;
 $color-white-dark: #f1f2f6;
 
+$color-blue-light: #70a1ff;
+$color-blue: #1e90ff;
+
 /** White color, #fff. */
 $mat-color-white: (
   100: $color-white,
@@ -22,11 +25,23 @@ $mat-color-white: (
   )
 );
 
-/** Black color, #303030. */
+/** Black color, #2f3542. */
 $mat-color-black: (
   100: $color-black,
   500: $color-black,
   700: $color-black,
+  contrast: (
+    100: $color-white,
+    500: $color-white,
+    700: $color-white
+  )
+);
+
+/** Blue color, #1e90ff. */
+$mat-color-blue: (
+  100: $color-blue-light,
+  500: $color-blue,
+  700: $color-blue,
   contrast: (
     100: $color-white,
     500: $color-white,

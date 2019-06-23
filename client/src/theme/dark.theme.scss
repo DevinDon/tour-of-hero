@@ -1,6 +1,28 @@
 @import "./function.scss";
 @import "./variable.scss";
 
+/** Dark coless theme, black(primary) + white + red. */
+.dark-coless-theme {
+  @include angular-material-theme(
+    mat-dark-theme(mat-palette($mat-color-black), mat-palette($mat-teal), mat-palette($mat-red))
+  );
+  @include mat-button-theme(
+    mat-dark-theme(mat-palette($mat-color-white), mat-palette($mat-blue), mat-palette($mat-red))
+  );
+  @include mat-form-field-theme(
+    mat-dark-theme(mat-palette($mat-color-white), mat-palette($mat-blue), mat-palette($mat-red))
+  );
+  @include mat-input-theme(
+    mat-dark-theme(mat-palette($mat-color-white), mat-palette($mat-blue), mat-palette($mat-red))
+  );
+  @include mat-progress-bar-theme-coless(
+    mat-light-theme(mat-palette($mat-color-black), mat-palette($mat-color-white), mat-palette($mat-red))
+  );
+  @include mat-select-theme(
+    mat-dark-theme(mat-palette($mat-color-white), mat-palette($mat-blue), mat-palette($mat-red))
+  );
+}
+
 /** Dark cyan theme, cyan + pink + red. */
 .dark-cyan-theme {
   @include angular-material-theme(
