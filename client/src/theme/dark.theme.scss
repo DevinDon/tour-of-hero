@@ -1,0 +1,16 @@
+@import "./function.scss";
+@import "./variable.scss";
+
+/** Dark cyan theme, cyan + pink + red. */
+.dark-cyan-theme {
+  @include angular-material-theme(
+    mat-dark-theme(mat-palette($mat-cyan), mat-palette($mat-pink), mat-palette($mat-red))
+  );
+}
+
+/** Dark teal theme, teal + pink + red. */
+.dark-teal-theme {
+  @include angular-material-theme(
+    mat-dark-theme(mat-palette($mat-teal), mat-palette($mat-pink), mat-palette($mat-red))
+  );
+}
