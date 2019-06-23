@@ -2,13 +2,11 @@
 
 section.list {
   display: flex;
-  flex-direction: row;
-  justify-content: space-around;
+  flex-direction: column;
   flex-wrap: wrap;
   > mat-card {
     background-color: $color-white-dark;
     margin: 1rem;
-    width: 15rem;
     height: 10rem;
     display: flex;
     flex-direction: column;
