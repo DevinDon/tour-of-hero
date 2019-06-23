@@ -8,10 +8,10 @@
       <img mat-card-avatar src="https://picsum.photos/300/300/?random" />
     </mat-card-header>
     <mat-card-content>
-      detail
+      {{ 'Hero detail information.' }}
     </mat-card-content>
     <mat-card-actions [align]="'end'">
-      <a mat-button color="primary" [routerLink]="['/hero', hero.id]">详情</a>
+      <a mat-button color="primary" [routerLink]="['/detail', hero.id]">详情</a>
       <a mat-button color="warn">删除</a>
     </mat-card-actions>
   </mat-card>
