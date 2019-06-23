@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { AppService } from 'src/app/app.service';
+import { HeroService } from '../hero.service';
+import { Hero } from '../hero.type';
 
 @Component({
   selector: 'app-hero-list',
@@ -7,9 +10,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeroListComponent implements OnInit {
 
-  constructor() { }
+  heroes: Hero[] = [];
+
+  constructor(
+    protected app: AppService,
+    private service: HeroService
+  ) { }
 
   ngOnInit() {
+    this.service.getAll().subscribe(v => this.heroes = v);
+  }
+
+  trackByFn(index: number, item: Hero) {
+    return item.id;
   }
 
 }
