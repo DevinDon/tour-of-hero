@@ -1,19 +1,25 @@
-mat-nav-list {
+@import "../../../theme/variable.scss";
+
+mat-list {
   > a {
+    text-decoration: none;
     width: fit-content;
     span {
       padding: 0.5rem 1rem;
       &.id {
-        background-color: #747d8c;
-        color: white;
+        background-color: $color-black;
+        color: $color-white;
         border-bottom-left-radius: 2px;
         border-top-left-radius: 2px;
       }
       &.name {
-        background-color: #dfe4ea;
+        background-color: $color-grey;
         border-top-right-radius: 2px;
         border-bottom-right-radius: 2px;
         min-width: 10rem;
+        &:hover {
+          background-color: $color-grey-dark;
+        }
       }
     }
   }
