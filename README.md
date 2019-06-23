@@ -1,3 +1,3 @@
-# Tour of Hero
+# Tour of Heroes
 
-Angular tour of hero, free play version.
+Tour of Heroes, with [Angular](https://angular.io) & [Rester](https://www.npmjs.com/package/@rester/core).
