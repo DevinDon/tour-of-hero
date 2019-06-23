@@ -1,20 +1,20 @@
 @import "../theme/variable.scss";
 
-mat-progress-bar.top {
+.progress {
   position: fixed;
   top: 0;
   left: 0;
   z-index: 32;
 }
 
-.content {
-  display: flex;
-  flex-direction: column;
-}
-
-.selected {
-  background-color: $color-black !important;
-  color: $color-white !important;
+.mat-expansion-panel {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  .selected {
+    background-color: $color-black !important;
+    color: $color-white !important;
+  }
 }
 
 .outlet {
