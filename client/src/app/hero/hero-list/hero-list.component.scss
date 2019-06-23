@@ -3,7 +3,6 @@
 mat-list {
   > a {
     text-decoration: none;
-    width: fit-content;
     span {
       padding: 0.5rem 1rem;
       &.id {
@@ -16,7 +15,7 @@ mat-list {
         background-color: $color-grey;
         border-top-right-radius: 2px;
         border-bottom-right-radius: 2px;
-        min-width: 10rem;
+        width: 100%;
         &:hover {
           background-color: $color-grey-dark;
         }
