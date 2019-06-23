@@ -1,7 +1,7 @@
+import { Platform } from '@angular/cdk/platform';
 import { Location } from '@angular/common';
 import { Component } from '@angular/core';
 import { AppService } from './app.service';
-import { Platform } from '@angular/cdk/platform';
 
 @Component({
   selector: 'app-root',
@@ -14,7 +14,8 @@ export class AppComponent {
 
   constructor(
     protected app: AppService,
-    private location: Location
+    private location: Location,
+    protected platform: Platform
   ) { }
 
   isPath(path: string) {

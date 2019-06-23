@@ -1,22 +1,30 @@
 @import "../theme/variable.scss";
 
-.progress {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 32;
-}
-
-.mat-expansion-panel {
-  position: sticky;
-  top: 0;
-  z-index: 30;
-  .selected {
-    background-color: $color-black !important;
-    color: $color-white !important;
+.window {
+  &.desktop {
+    max-width: 420px;
+    margin: 0 auto;
+    box-shadow: 8px 6px 12px -5px rgba(0, 0, 0, 0.3), -8px -6px 12px -5px rgba(0, 0, 0, 0.3);
   }
-}
 
-.outlet {
-  padding: 0 1rem;
+  .progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 32;
+  }
+
+  .mat-expansion-panel {
+    position: sticky;
+    top: 0;
+    z-index: 30;
+    .selected {
+      background-color: $color-black !important;
+      color: $color-white !important;
+    }
+  }
+
+  .outlet {
+    padding: 0 1rem;
+  }
 }
