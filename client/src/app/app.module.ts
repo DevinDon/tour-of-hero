@@ -9,6 +9,7 @@ import { HeroTopComponent } from './hero/hero-top/hero-top.component';
 import { MaterialModule } from './module/material.module';
 import { OtherModule } from './module/other.module';
 import { RoutingModule } from './module/routing.module';
+import { AboutComponent } from './about/about.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { RoutingModule } from './module/routing.module';
     DashboardComponent,
     HeroListComponent,
     HeroDetailComponent,
-    HeroTopComponent
+    HeroTopComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule,
