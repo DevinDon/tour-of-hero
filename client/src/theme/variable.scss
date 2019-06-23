@@ -1,61 +1,69 @@
-$color-hex-white: #ffffff;
-$color-hex-grey: #dfe4ea;
-$color-hex-black: #2f3542;
+$color-black-light: #57606f;
+$color-black: #2f3542;
+
+$color-gray-light: #a4b0be;
+$color-gray: #747d8c;
+
+$color-grey: #dfe4ea;
+$color-grey-dark: #ced6e0;
+
+$color-white: #ffffff;
+$color-white-dark: #f1f2f6;
 
 /** White color, #fff. */
-$color-white: (
-  100: $color-hex-white,
-  500: $color-hex-white,
-  700: $color-hex-white,
+$mat-color-white: (
+  100: $color-white,
+  500: $color-white,
+  700: $color-white,
   contrast: (
-    100: $color-hex-black,
-    500: $color-hex-black,
-    700: $color-hex-black
+    100: $color-black,
+    500: $color-black,
+    700: $color-black
   )
 );
 
 /** Black color, #303030. */
-$color-black: (
-  100: $color-hex-black,
-  500: $color-hex-black,
-  700: $color-hex-black,
+$mat-color-black: (
+  100: $color-black,
+  500: $color-black,
+  700: $color-black,
   contrast: (
-    100: $color-hex-white,
-    500: $color-hex-white,
-    700: $color-hex-white
+    100: $color-white,
+    500: $color-white,
+    700: $color-white
   )
 );
 
 // /** Background palette for light themes. */
 // $mat-light-theme-background: (
-//   status-bar: map_get($color-black, 300),
-//   app-bar: map_get($color-black, 100),
-//   background: map_get($color-black, 50),
+//   status-bar: map_get($mat-color-black, 300),
+//   app-bar: map_get($mat-color-black, 100),
+//   background: map_get($mat-color-black, 50),
 //   hover: rgba(black, 0.04),
 //   dialog: white,
 //   disabled-button: rgba(black, 0.12),
 //   raised-button: white,
 //   focused-button: $dark-focused,
-//   selected-button: map_get($color-black, 300),
-//   selected-disabled-button: map_get($color-black, 400),
-//   disabled-button-toggle: map_get($color-black, 200),
-//   unselected-chip: map_get($color-black, 300),
-//   disabled-list-option: map_get($color-black, 200)
+//   selected-button: map_get($mat-color-black, 300),
+//   selected-disabled-button: map_get($mat-color-black, 400),
+//   disabled-button-toggle: map_get($mat-color-black, 200),
+//   unselected-chip: map_get($mat-color-black, 300),
+//   disabled-list-option: map_get($mat-color-black, 200)
 // );
 
 // // Background palette for light themes.
 // $mat-light-theme-background: (
-//   status-bar: map_get($mat-grey, 300),
-//   app-bar: map_get($mat-grey, 100),
-//   background: map_get($mat-grey, 50),
+//   status-bar: map_get($mat-gray, 300),
+//   app-bar: map_get($mat-gray, 100),
+//   background: map_get($mat-gray, 50),
 //   hover: rgba(black, 0.04),
 //   dialog: white,
 //   disabled-button: rgba(black, 0.12),
 //   raised-button: white,
 //   focused-button: $dark-focused,
-//   selected-button: map_get($mat-grey, 300),
-//   selected-disabled-button: map_get($mat-grey, 400),
-//   disabled-button-toggle: map_get($mat-grey, 200),
-//   unselected-chip: map_get($mat-grey, 300),
-//   disabled-list-option: map_get($mat-grey, 200)
+//   selected-button: map_get($mat-gray, 300),
+//   selected-disabled-button: map_get($mat-gray, 400),
+//   disabled-button-toggle: map_get($mat-gray, 200),
+//   unselected-chip: map_get($mat-gray, 300),
+//   disabled-list-option: map_get($mat-gray, 200)
 // );
