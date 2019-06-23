@@ -35,7 +35,15 @@ export class AppService {
     this.subjections.loading.subject.next(--this.subjections.loading.value);
   }
 
-  openBar(message: string, action: string = 'OK', config: MatSnackBarConfig = { duration: 3000 }) {
+  openBar(
+    message: string,
+    action: string = 'OK',
+    config: MatSnackBarConfig = {
+      duration: 3000,
+      horizontalPosition: 'right',
+      verticalPosition: 'bottom'
+    }
+  ) {
     this.bar.open(message, action, config);
   }
 
