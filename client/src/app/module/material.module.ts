@@ -8,13 +8,15 @@ import {
   MatProgressBarModule,
   MatSnackBarModule,
   MatListModule,
-  MatExpansionModule
+  MatExpansionModule,
+  MatDialogModule
 } from '@angular/material';
 
 @NgModule({
   exports: [
     MatButtonModule,
     MatCardModule,
+    MatDialogModule,
     MatExpansionModule,
     MatFormFieldModule,
     MatIconModule,
