@@ -2,7 +2,7 @@
 
 <mat-list>
   <mat-list-item *ngFor="let hero of heroes; trackBy: trackByFn">
-    <span class="id">No. {{ hero.id }}</span>
+    <span class="id">No.{{ hero.id }}</span>
     <span class="name" (click)="openDetail(hero.id)">{{ hero.name }}</span>
     <span class="delete" (click)="delete(hero.id)">X</span>
   </mat-list-item>
