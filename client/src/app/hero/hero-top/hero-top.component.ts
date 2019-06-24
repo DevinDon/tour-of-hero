@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AppService } from 'src/app/app.service';
+import { HeroDetailComponent } from '../hero-detail/hero-detail.component';
 import { HeroService } from '../hero.service';
 import { Hero } from '../hero.type';
 
@@ -59,6 +60,15 @@ export class HeroTopComponent implements OnInit {
           this.app.openBar('Liked failed.');
         }
       });
+  }
+
+  openDetail(id: number) {
+    this.app.openDialog(HeroDetailComponent, {
+      autoFocus: false,
+      data: this.heroes.find(v => v.id === id),
+      width: '100vw',
+      maxWidth: '20rem'
+    });
   }
 
 }
