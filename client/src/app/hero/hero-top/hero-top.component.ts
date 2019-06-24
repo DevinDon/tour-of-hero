@@ -20,7 +20,7 @@ export class HeroTopComponent implements OnInit {
   ngOnInit() {
     this.service.getTop().subscribe(v => {
       if (v.status) {
-        this.heroes = v.content;
+        this.heroes = v.content.sort((a, b) => b.like - a.like);
       } else {
         this.app.openBar('Cannot get top heroes data.');
       }
@@ -31,8 +31,20 @@ export class HeroTopComponent implements OnInit {
     return item.id;
   }
 
-  like() {
-    // this.service.
+  like(id: number) {
+    this.service
+      .like(id)
+      .subscribe(v => {
+        if (v.status) {
+          this.app.openBar(`Total liked: ${v.content}.`);
+        } else {
+          this.app.openBar('Liked failed.');
+        }
+      });
+  }
+
+  delete() {
+
   }
 
 }

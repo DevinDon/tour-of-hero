@@ -38,13 +38,9 @@ export class HeroService {
       .put<BaseResponse<Hero>>(HeroService.API$HEROES + `/update/${hero.id}`, hero);
   }
 
-  like(id: number) {
-    // this.app.busy();
+  like(id: number): Observable<BaseResponse<number>> {
     return this.http
-      .post(`/like/${id}`, {})
-      .pipe(
-        // finalize(() => this.app.free())
-      );
+      .post<BaseResponse<number>>(HeroService.API$HEROES + `/like/${id}`, undefined);
   }
 
 }
