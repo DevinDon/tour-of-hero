@@ -1,13 +1,19 @@
-<div class="window" [ngClass]="{'desktop': !(platform.ANDROID || platform.IOS)}">
+<div class="window">
 
   <mat-progress-bar class="progress" color="primary" mode="indeterminate" *ngIf="app.status.loading"></mat-progress-bar>
 
-  <mat-expansion-panel>
+  <mat-expansion-panel #panel [expanded]="true">
     <mat-expansion-panel-header>
-      <h1>{{ title }}</h1>
+      <h1 style="display: flex; flex-direction: row; align-items: center;">
+        <mat-icon>{{ title.icon }}</mat-icon> <span style="margin-left: 1rem;">{{ title.title }}</span>
+      </h1>
     </mat-expansion-panel-header>
     <mat-nav-list>
-      <a mat-list-item [ngClass]="{'selected': isPath('/dashboard')}" [routerLink]="[ '/dashboard' ]">
+      <a mat-list-item *ngFor="let route of routes; trackBy: trackByFn"
+        [ngClass]="{'selected': title.path === route.path}" (click)="panel.close()" [routerLink]="[ route.path ]">
+        <mat-icon>{{ route.icon }}</mat-icon> {{ route.title }}
+      </a>
+      <!-- <a mat-list-item [ngClass]="{'selected': isPath('/dashboard')}" [routerLink]="[ '/dashboard' ]">
         <mat-icon>dashboard</mat-icon> Dashboard
       </a>
       <a mat-list-item [ngClass]="{'selected': isPath('/hero/list')}" [routerLink]="[ '/hero/list' ]">
@@ -18,7 +24,7 @@
       </a>
       <a mat-list-item [ngClass]="{'selected': isPath('/about')}" [routerLink]="[ '/about' ]">
         <mat-icon>info_outline</mat-icon> About
-      </a>
+      </a> -->
     </mat-nav-list>
   </mat-expansion-panel>
 
