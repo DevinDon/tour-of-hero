@@ -1,5 +1,6 @@
-import { Injectable } from '@angular/core';
-import { MatSnackBar, MatSnackBarConfig } from '@angular/material';
+import { ComponentType } from '@angular/cdk/portal';
+import { Injectable, TemplateRef } from '@angular/core';
+import { MatDialog, MatDialogConfig, MatSnackBar, MatSnackBarConfig } from '@angular/material';
 import { Subject } from 'rxjs';
 import { auditTime } from 'rxjs/operators';
 
@@ -20,7 +21,8 @@ export class AppService {
   };
 
   constructor(
-    private bar: MatSnackBar
+    private bar: MatSnackBar,
+    private dialog: MatDialog
   ) {
     this.subjections.loading.subject
       .pipe(auditTime(16))
@@ -49,6 +51,14 @@ export class AppService {
 
   closeBar() {
     this.bar.dismiss();
+  }
+
+  openDialog<T>(component: ComponentType<T> | TemplateRef<T>, config?: MatDialogConfig) {
+    this.dialog.open(component, config);
+  }
+
+  closeDialog() {
+    this.dialog.closeAll();
   }
 
 }
