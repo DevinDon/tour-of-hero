@@ -40,10 +40,14 @@ export class HeroDetailComponent implements OnInit {
   load() {
     this.service
       .getOne(+this.route.snapshot.paramMap.get('id'))
-      .subscribe(hero => {
-        this.hero = hero;
-        this.formGroup.get('id').setValue(hero.id);
-        this.formGroup.get('name').setValue(hero.name);
+      .subscribe(v => {
+        if (v.status) {
+          this.hero = v.content;
+          this.formGroup.get('id').setValue(v.content.id);
+          this.formGroup.get('name').setValue(v.content.name);
+        } else {
+          this.app.openBar(`Cannot get hero data.`);
+        }
       });
   }
 

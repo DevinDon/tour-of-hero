@@ -28,16 +28,9 @@ export class HeroService {
       .get<BaseResponse<Hero[]>>(HeroService.API$HEROES + '/get/top');
   }
 
-  getOne(id: number): Observable<Hero> {
-    // this.app.busy();
+  getOne(id: number): Observable<BaseResponse<Hero>> {
     return this.http
-      .get<Hero[]>(HeroService.API$HEROES)
-      .pipe(
-        delay(200),
-        mergeAll(),
-        filter(hero => hero.id === id),
-        // finalize(() => this.app.free())
-      );
+      .get<BaseResponse<Hero>>(HeroService.API$HEROES + `/get/${id}`);
   }
 
   saveOne(hero: Hero): Observable<BaseResponse> {
