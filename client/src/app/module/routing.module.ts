@@ -6,7 +6,7 @@ import { HeroListComponent } from '../hero/hero-list/hero-list.component';
 import { HeroTopsComponent } from '../hero/hero-tops/hero-tops.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
+  { path: '', redirectTo: 'about', pathMatch: 'full' },
   { path: 'about', component: AboutComponent },
   { path: 'dashboard', component: DashboardComponent },
   { path: 'hero/list', component: HeroListComponent },
