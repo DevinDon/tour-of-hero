@@ -33,9 +33,9 @@ export class HeroService {
       .get<BaseResponse<Hero>>(HeroService.API$HEROES + `/get/${id}`);
   }
 
-  update(hero: Partial<Hero>): Observable<BaseResponse<Hero>> {
+  update(id: number, hero: Partial<Hero>): Observable<BaseResponse<Hero>> {
     return this.http
-      .put<BaseResponse<Hero>>(HeroService.API$HEROES + `/update/${hero.id}`, hero);
+      .put<BaseResponse<Hero>>(HeroService.API$HEROES + `/update/${id}`, hero);
   }
 
   like(id: number): Observable<BaseResponse<number>> {
