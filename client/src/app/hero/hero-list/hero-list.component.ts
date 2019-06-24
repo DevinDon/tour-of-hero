@@ -18,7 +18,13 @@ export class HeroListComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.service.getAll().subscribe(v => this.heroes = v);
+    this.service.getAll().subscribe(v => {
+      if (v.status) {
+        this.heroes = v.content;
+      } else {
+        this.app.openBar('Cannot get all heroes data.');
+      }
+    });
   }
 
   trackByFn(index: number, item: Hero) {
