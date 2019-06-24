@@ -22,18 +22,21 @@ export class HeroDetailComponent implements OnInit {
   ) {
     this.formGroup = new FormGroup({
       id: new FormControl('', [Validators.required]),
-      name: new FormControl('', [Validators.required])
+      name: new FormControl('', [Validators.required, Validators.maxLength(64)]),
+      description: new FormControl('', [Validators.maxLength(250)])
     });
   }
 
   ngOnInit() {
     this.formGroup.get('id').setValue(this.hero.id);
     this.formGroup.get('name').setValue(this.hero.name);
+    this.formGroup.get('description').setValue(this.hero.description);
     this.formGroup.get('id').disable();
   }
 
   update() {
     this.hero.name = this.formGroup.get('name').value;
+    this.hero.description = this.formGroup.get('description').value;
     this.service
       .update(this.formGroup.get('id').value, this.hero)
       .subscribe(v => {

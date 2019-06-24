@@ -19,10 +19,25 @@
           <mat-icon>face</mat-icon> Name
         </mat-placeholder>
         <mat-hint>
-          <mat-icon>face</mat-icon> Enter hero name
+          <mat-icon>face</mat-icon> Enter hero's name
         </mat-hint>
         <mat-error *ngIf="formGroup.get('name').hasError('required')">
           <mat-icon>block</mat-icon> Name is required
+        </mat-error>
+        <mat-error *ngIf="formGroup.get('name').hasError('maxlength')">
+          <mat-icon>block</mat-icon> Name up to 64 chars
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput formControlName="description">
+        <mat-placeholder>
+          <mat-icon>description</mat-icon> Description
+        </mat-placeholder>
+        <mat-hint>
+          <mat-icon>description</mat-icon> Enter hero's description
+        </mat-hint>
+        <mat-error *ngIf="formGroup.get('name').hasError('maxlength')">
+          <mat-icon>block</mat-icon> Description up to 250 chars
         </mat-error>
       </mat-form-field>
     </form>
