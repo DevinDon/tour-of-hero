@@ -14,6 +14,7 @@ import { RoutingModule } from './module/routing.module';
 import { LoadingInterceptor } from './other/loading.interceptor';
 
 @NgModule({
+  bootstrap: [AppComponent],
   declarations: [
     AppComponent,
     DashboardComponent,
@@ -22,6 +23,7 @@ import { LoadingInterceptor } from './other/loading.interceptor';
     HeroTopComponent,
     AboutComponent
   ],
+  entryComponents: [],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -31,7 +33,6 @@ import { LoadingInterceptor } from './other/loading.interceptor';
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true }
-  ],
-  bootstrap: [AppComponent]
+  ]
 })
 export class AppModule { }
