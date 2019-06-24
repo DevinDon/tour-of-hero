@@ -51,13 +51,13 @@ export class HeroDetailComponent implements OnInit {
       });
   }
 
-  save() {
+  update() {
     const hero: Hero = {
       id: this.formGroup.get('id').value,
       name: this.formGroup.get('name').value
     };
     this.service
-      .saveOne(hero)
+      .update(hero)
       .subscribe(v => {
         if (v.status) {
           this.app.openBar(`Hero ${hero.name} saved successfully.`);

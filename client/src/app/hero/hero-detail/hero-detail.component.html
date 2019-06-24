@@ -24,8 +24,8 @@
       </mat-error>
     </mat-form-field>
     <div class="button">
-      <button mat-raised-button color="primary" (click)="save()"
-        [disabled]="app.status.loading || formGroup.invalid">Save</button>
+      <button mat-raised-button color="primary" (click)="update()"
+        [disabled]="app.status.loading || formGroup.invalid">Update</button>
       <button mat-button (click)="back()">Cancel</button>
     </div>
   </form>

@@ -33,13 +33,9 @@ export class HeroService {
       .get<BaseResponse<Hero>>(HeroService.API$HEROES + `/get/${id}`);
   }
 
-  saveOne(hero: Hero): Observable<BaseResponse> {
-    // this.app.busy();
-    return of<BaseResponse>({ status: true })
-      .pipe(
-        delay(1000),
-        // finalize(() => this.app.free())
-      );
+  update(hero: Hero): Observable<BaseResponse<Hero>> {
+    return this.http
+      .put<BaseResponse<Hero>>(HeroService.API$HEROES + `/update/${hero.id}`, hero);
   }
 
   like(id: number) {
