@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AppService } from 'src/app/app.service';
 import { HeroService } from '../hero.service';
 import { Hero } from '../hero.type';
+import { HeroDetailComponent } from '../hero-detail/hero-detail.component';
 
 @Component({
   selector: 'app-hero-list',
@@ -42,6 +43,10 @@ export class HeroListComponent implements OnInit {
           this.app.openBar(`Hero ${id} deleted failed.`);
         }
       });
+  }
+
+  openDetail(id: number) {
+    this.app.openDialog(HeroDetailComponent, { data: this.heroes.find(v => v.id === id) });
   }
 
 }
