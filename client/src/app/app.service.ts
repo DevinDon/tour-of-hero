@@ -53,8 +53,20 @@ export class AppService {
     this.bar.dismiss();
   }
 
-  openDialog<T>(component: ComponentType<T> | TemplateRef<T>, config?: MatDialogConfig) {
-    this.dialog.open(component, config);
+  openDialog<T>(
+    component: ComponentType<T> | TemplateRef<T>,
+    config?: MatDialogConfig
+  ) {
+    this.dialog.open(
+      component,
+      Object.assign(
+        config || {},
+        {
+          width: '100vw',
+          maxWidth: '20rem'
+        }
+      )
+    );
   }
 
   closeDialog() {

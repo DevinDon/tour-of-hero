@@ -63,12 +63,7 @@ export class HeroTopComponent implements OnInit {
   }
 
   openDetail(id: number) {
-    this.app.openDialog(HeroDetailComponent, {
-      autoFocus: false,
-      data: this.heroes.find(v => v.id === id),
-      width: '100vw',
-      maxWidth: '20rem'
-    });
+    this.app.openDialog(HeroDetailComponent, { data: this.heroes.find(v => v.id === id) });
   }
 
 }
