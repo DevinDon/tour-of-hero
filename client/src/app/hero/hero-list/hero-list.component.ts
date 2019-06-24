@@ -20,7 +20,7 @@ export class HeroListComponent implements OnInit {
   ngOnInit() {
     this.service.getAll().subscribe(v => {
       if (v.status) {
-        this.heroes = v.content;
+        this.heroes = v.content.sort((a, b) => a.id - b.id);
       } else {
         this.app.openBar('Cannot get all heroes data.');
       }

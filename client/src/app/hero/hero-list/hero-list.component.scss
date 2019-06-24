@@ -5,20 +5,25 @@ mat-list {
     text-decoration: none;
     span {
       padding: 0.5rem 1rem;
+      &:hover {
+        background-color: $color-grey-dark;
+      }
       &.id {
         background-color: $color-black;
         color: $color-white;
         border-bottom-left-radius: 2px;
         border-top-left-radius: 2px;
+        min-width: 4rem;
+      }
+      &.like {
+        background-color: $color-blue-light;
+        min-width: 4rem;
       }
       &.name {
         background-color: $color-grey;
         border-top-right-radius: 2px;
         border-bottom-right-radius: 2px;
         width: 100%;
-        &:hover {
-          background-color: $color-grey-dark;
-        }
       }
     }
   }
