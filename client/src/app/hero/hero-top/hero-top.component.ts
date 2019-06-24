@@ -18,6 +18,14 @@ export class HeroTopComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.getTop();
+  }
+
+  trackByFn(index: number, item: Hero) {
+    return item.id;
+  }
+
+  getTop() {
     this.service.getTop().subscribe(v => {
       if (v.status) {
         this.heroes = v.content.sort((a, b) => b.like - a.like);
@@ -27,8 +35,17 @@ export class HeroTopComponent implements OnInit {
     });
   }
 
-  trackByFn(index: number, item: Hero) {
-    return item.id;
+  delete(id: number) {
+    this.service
+      .delete(id)
+      .subscribe(v => {
+        if (v.status) {
+          this.getTop();
+          this.app.openBar(`Hero ${id} has been deleted.`);
+        } else {
+          this.app.openBar(`Hero ${id} deleted failed.`);
+        }
+      });
   }
 
   like(id: number) {
@@ -41,10 +58,6 @@ export class HeroTopComponent implements OnInit {
           this.app.openBar('Liked failed.');
         }
       });
-  }
-
-  delete() {
-
   }
 
 }

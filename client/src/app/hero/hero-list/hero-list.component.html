@@ -1,8 +1,9 @@
 <h3>Hero List</h3>
 
 <mat-list>
-  <a mat-list-item *ngFor="let hero of heroes; trackBy: trackByFn" [routerLink]="['/detail', hero.id]">
+  <mat-list-item *ngFor="let hero of heroes; trackBy: trackByFn">
     <span class="id">No. {{ hero.id }}</span>
-    <span class="name">{{ hero.name }}</span>
-  </a>
+    <span class="name" [routerLink]="['/detail', hero.id]">{{ hero.name }}</span>
+    <span class="delete" (click)="delete(hero.id)">X</span>
+  </mat-list-item>
 </mat-list>

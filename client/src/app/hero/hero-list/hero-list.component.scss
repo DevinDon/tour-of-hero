@@ -1,13 +1,11 @@
 @import "../../../theme/variable.scss";
 
 mat-list {
-  > a {
+  > mat-list-item {
     text-decoration: none;
     span {
+      cursor: pointer;
       padding: 0.5rem 1rem;
-      &:hover {
-        background-color: $color-grey-dark;
-      }
       &.id {
         background-color: $color-black;
         color: $color-white;
@@ -15,15 +13,20 @@ mat-list {
         border-top-left-radius: 2px;
         min-width: 4rem;
       }
-      &.like {
-        background-color: $color-blue-light;
-        min-width: 4rem;
-      }
       &.name {
+        background-color: $color-grey;
+        width: 100%;
+        &:hover {
+          background-color: $color-gray-light;
+        }
+      }
+      &.delete {
         background-color: $color-grey;
         border-top-right-radius: 2px;
         border-bottom-right-radius: 2px;
-        width: 100%;
+        &:hover {
+          background-color: $color-gray-light;
+        }
       }
     }
   }

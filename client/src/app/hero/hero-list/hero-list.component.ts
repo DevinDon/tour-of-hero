@@ -31,4 +31,17 @@ export class HeroListComponent implements OnInit {
     return item.id;
   }
 
+  delete(id: number) {
+    this.service
+      .delete(id)
+      .subscribe(v => {
+        if (v.status) {
+          this.app.openBar(`Hero ${id} has been deleted.`);
+          this.heroes.splice(this.heroes.findIndex(value => value.id === id), 1);
+        } else {
+          this.app.openBar(`Hero ${id} deleted failed.`);
+        }
+      });
+  }
+
 }

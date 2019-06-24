@@ -43,4 +43,9 @@ export class HeroService {
       .post<BaseResponse<number>>(HeroService.API$HEROES + `/like/${id}`, undefined);
   }
 
+  delete(id: number): Observable<BaseResponse> {
+    return this.http
+      .delete<BaseResponse>(HeroService.API$HEROES + `/delete/${id}`);
+  }
+
 }
