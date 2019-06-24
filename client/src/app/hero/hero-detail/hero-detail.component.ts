@@ -52,7 +52,7 @@ export class HeroDetailComponent implements OnInit {
   }
 
   update() {
-    const hero: Hero = {
+    const hero: Partial<Hero> = {
       id: this.formGroup.get('id').value,
       name: this.formGroup.get('name').value
     };
