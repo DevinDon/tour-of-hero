@@ -6,10 +6,10 @@ import { Hero } from '../hero.type';
 
 @Component({
   selector: 'app-hero-top',
-  templateUrl: './hero-top.component.html',
-  styleUrls: ['./hero-top.component.scss']
+  templateUrl: './hero-tops.component.html',
+  styleUrls: ['./hero-tops.component.scss']
 })
-export class HeroTopComponent implements OnInit {
+export class HeroTopsComponent implements OnInit {
 
   heroes: Hero[] = [];
 

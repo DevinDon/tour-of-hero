@@ -7,7 +7,7 @@ import { AppComponent } from './app.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { HeroDetailComponent } from './hero/hero-detail/hero-detail.component';
 import { HeroListComponent } from './hero/hero-list/hero-list.component';
-import { HeroTopComponent } from './hero/hero-top/hero-top.component';
+import { HeroTopsComponent } from './hero/hero-tops/hero-tops.component';
 import { DialogModule } from './module/dialog.module';
 import { MaterialModule } from './module/material.module';
 import { OtherModule } from './module/other.module';
@@ -21,7 +21,7 @@ import { LoadingInterceptor } from './other/loading.interceptor';
     DashboardComponent,
     HeroListComponent,
     HeroDetailComponent,
-    HeroTopComponent,
+    HeroTopsComponent,
     AboutComponent
   ],
   entryComponents: [],
