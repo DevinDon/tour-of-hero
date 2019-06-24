@@ -1,7 +1,6 @@
-import { Location } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { AppService } from 'src/app/app.service';
 import { HeroService } from '../hero.service';
 import { Hero } from '../hero.type';
@@ -13,57 +12,37 @@ import { Hero } from '../hero.type';
 })
 export class HeroDetailComponent implements OnInit {
 
-  hero: Hero;
-  formGroup: FormGroup;
+  protected formGroup: FormGroup;
 
   constructor(
     protected app: AppService,
-    private location: Location,
-    private route: ActivatedRoute,
+    @Inject(MAT_DIALOG_DATA) protected hero: Hero,
+    private dialog: MatDialogRef<HeroDetailComponent>,
     private service: HeroService
   ) {
     this.formGroup = new FormGroup({
       id: new FormControl('', [Validators.required]),
       name: new FormControl('', [Validators.required])
     });
-    this.formGroup.get('id').disable();
   }
 
   ngOnInit() {
-    this.load();
-  }
-
-  back() {
-    this.location.back();
-  }
-
-  load() {
-    this.service
-      .getOne(+this.route.snapshot.paramMap.get('id'))
-      .subscribe(v => {
-        if (v.status) {
-          this.hero = v.content;
-          this.formGroup.get('id').setValue(v.content.id);
-          this.formGroup.get('name').setValue(v.content.name);
-        } else {
-          this.app.openBar(`Cannot get hero data.`);
-        }
-      });
+    this.formGroup.get('id').setValue(this.hero.id);
+    this.formGroup.get('name').setValue(this.hero.name);
+    this.formGroup.get('id').disable();
   }
 
   update() {
-    const hero: Partial<Hero> = {
-      id: this.formGroup.get('id').value,
-      name: this.formGroup.get('name').value
-    };
+    this.hero.name = this.formGroup.get('name').value;
     this.service
-      .update(hero)
+      .update(this.formGroup.get('id').value, this.hero)
       .subscribe(v => {
         if (v.status) {
-          this.app.openBar(`Hero ${hero.name} saved successfully.`);
+          this.app.openBar(`Hero ${this.hero.id}: ${this.hero.name} saved successfully.`);
         } else {
-          this.app.openBar(`Hero ${hero.name} saved failed.`);
+          this.app.openBar(`Hero ${this.hero.id}: ${this.hero.name} saved failed.`);
         }
+        this.dialog.close();
       });
   }
 
