@@ -12,11 +12,11 @@ import { Hero } from '../hero.type';
 })
 export class HeroDetailComponent implements OnInit {
 
-  protected formGroup: FormGroup;
+  public formGroup: FormGroup;
 
   constructor(
-    protected app: AppService,
-    @Inject(MAT_DIALOG_DATA) protected hero: Hero,
+    public app: AppService,
+    @Inject(MAT_DIALOG_DATA) public hero: Hero,
     private dialog: MatDialogRef<HeroDetailComponent>,
     private service: HeroService
   ) {

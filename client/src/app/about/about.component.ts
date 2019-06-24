@@ -13,7 +13,7 @@ interface TimeEvent {
 })
 export class AboutComponent implements OnInit {
 
-  protected events: TimeEvent[] = [];
+  public events: TimeEvent[] = [];
 
   constructor() {
     this.events.push({

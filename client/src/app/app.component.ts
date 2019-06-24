@@ -15,7 +15,7 @@ interface Route {
 })
 export class AppComponent implements OnInit {
 
-  protected routes: Route[] = [{
+  public routes: Route[] = [{
     path: '/dashboard',
     icon: 'dashboard',
     title: 'Dashboard'
@@ -36,14 +36,14 @@ export class AppComponent implements OnInit {
     title: 'About'
   }];
 
-  protected title: Route = {
+  public title: Route = {
     path: '/',
     icon: '',
     title: 'Tour of Heroes'
   };
 
   constructor(
-    protected app: AppService,
+    public app: AppService,
     private router: Router
   ) { }
 

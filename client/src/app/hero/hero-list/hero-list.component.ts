@@ -11,14 +11,14 @@ import { HeroDetailComponent } from '../hero-detail/hero-detail.component';
 })
 export class HeroListComponent implements OnInit {
 
-  protected page = {
+  public page = {
     offset: 0,
     limit: 15
   };
-  protected heroes: Hero[] = [];
+  public heroes: Hero[] = [];
 
   constructor(
-    protected app: AppService,
+    public app: AppService,
     private service: HeroService
   ) { }
 
