@@ -15,7 +15,7 @@
         <mat-icon>image_aspect_ratio_outline</mat-icon> Detail
       </a>
       <a mat-button color="accent" (click)="like(hero.id)">
-        <mat-icon>favorite_outline</mat-icon> Like
+        <mat-icon>favorite_outline</mat-icon> {{ hero.like }}
       </a>
       <a mat-button color="warn" (click)="delete(hero.id)">
         <mat-icon>delete_outline</mat-icon> Delete

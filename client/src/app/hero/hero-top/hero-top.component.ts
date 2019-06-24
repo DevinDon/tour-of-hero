@@ -54,6 +54,7 @@ export class HeroTopComponent implements OnInit {
       .subscribe(v => {
         if (v.status) {
           this.app.openBar(`Total liked: ${v.content}.`);
+          this.heroes.find(value => value.id === id).like = v.content;
         } else {
           this.app.openBar('Liked failed.');
         }
