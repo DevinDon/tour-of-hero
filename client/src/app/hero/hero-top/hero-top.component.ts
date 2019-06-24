@@ -36,19 +36,6 @@ export class HeroTopComponent implements OnInit {
     });
   }
 
-  delete(id: number) {
-    this.service
-      .delete(id)
-      .subscribe(v => {
-        if (v.status) {
-          this.getTop();
-          this.app.openBar(`Hero ${id} has been deleted.`);
-        } else {
-          this.app.openBar(`Hero ${id} deleted failed.`);
-        }
-      });
-  }
-
   like(id: number) {
     this.service
       .like(id)

@@ -10,15 +10,15 @@
     <mat-card-content>
       {{ 'Hero detail information.' }}
     </mat-card-content>
-    <mat-card-actions [align]="'end'">
-      <button mat-button color="primary" (click)="openDetail(hero.id)">
-        <mat-icon>image_aspect_ratio_outline</mat-icon> Detail
-      </button>
-      <button mat-button color="accent" (click)="like(hero.id)">
+    <mat-card-actions>
+      <button mat-button (click)="like(hero.id)">
         <mat-icon>favorite_outline</mat-icon> {{ hero.like }}
       </button>
-      <button mat-button color="warn" (click)="delete(hero.id)">
-        <mat-icon>delete_outline</mat-icon> Delete
+      <button mat-button>
+        <mat-icon>comment</mat-icon> {{ 10 }}
+      </button>
+      <button mat-button (click)="openDetail(hero.id)">
+        <mat-icon>aspect_ratio_outline</mat-icon>
       </button>
     </mat-card-actions>
   </mat-card>
