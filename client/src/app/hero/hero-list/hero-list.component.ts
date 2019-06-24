@@ -11,7 +11,11 @@ import { HeroDetailComponent } from '../hero-detail/hero-detail.component';
 })
 export class HeroListComponent implements OnInit {
 
-  heroes: Hero[] = [];
+  protected page = {
+    offset: 0,
+    limit: 15
+  };
+  protected heroes: Hero[] = [];
 
   constructor(
     protected app: AppService,
@@ -19,13 +23,19 @@ export class HeroListComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.service.getAll().subscribe(v => {
-      if (v.status) {
-        this.heroes = v.content.sort((a, b) => a.id - b.id);
-      } else {
-        this.app.openBar('Cannot get all heroes data.');
-      }
-    });
+    this.getLimit();
+  }
+
+  getLimit(offset: number = this.page.offset, limit: number = this.page.limit) {
+    this.service
+      .getLimit(offset, limit)
+      .subscribe(v => {
+        if (v.status) {
+          this.heroes = v.content.sort((a, b) => a.id - b.id);
+        } else {
+          this.app.openBar(`Cannot get heroes data, from ${offset + 1} to ${offset + limit}.`);
+        }
+      });
   }
 
   trackByFn(index: number, item: Hero) {
@@ -47,6 +57,14 @@ export class HeroListComponent implements OnInit {
 
   openDetail(id: number) {
     this.app.openDialog(HeroDetailComponent, { data: this.heroes.find(v => v.id === id) });
+  }
+
+  prev() {
+    this.getLimit(this.page.offset = this.page.offset - this.page.limit < 0 ? 0 : this.page.offset - this.page.offset);
+  }
+
+  next() {
+    this.getLimit(this.page.offset += this.page.limit);
   }
 
 }

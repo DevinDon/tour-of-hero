@@ -7,3 +7,13 @@
     <span class="delete" (click)="delete(hero.id)">X</span>
   </mat-list-item>
 </mat-list>
+
+<div class="buttons">
+  <button mat-button (click)="prev()" [disabled]="app.status.loading !== 0">
+    <mat-icon>keyboard_arrow_left</mat-icon> Prev
+  </button>
+  <span>{{ page.offset + 1 }} to {{ page.offset + page.limit }}</span>
+  <button mat-button (click)="next()" [disabled]="app.status.loading !== 0">
+    Next <mat-icon>keyboard_arrow_right</mat-icon>
+  </button>
+</div>

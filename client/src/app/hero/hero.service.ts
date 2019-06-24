@@ -23,6 +23,11 @@ export class HeroService {
       .get<BaseResponse<Hero[]>>(HeroService.API$HEROES + '/get/all');
   }
 
+  getLimit(offset: number, limit: number): Observable<BaseResponse<Hero[]>> {
+    return this.http
+      .get<BaseResponse<Hero[]>>(HeroService.API$HEROES + `/get/${offset}/limit/${limit}`);
+  }
+
   getTop(total: number = 4): Observable<BaseResponse<Hero[]>> {
     return this.http
       .get<BaseResponse<Hero[]>>(HeroService.API$HEROES + '/get/top');
