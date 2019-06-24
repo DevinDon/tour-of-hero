@@ -13,18 +13,6 @@
         [ngClass]="{'selected': title.path === route.path}" (click)="panel.close()" [routerLink]="[ route.path ]">
         <mat-icon>{{ route.icon }}</mat-icon> {{ route.title }}
       </a>
-      <!-- <a mat-list-item [ngClass]="{'selected': isPath('/dashboard')}" [routerLink]="[ '/dashboard' ]">
-        <mat-icon>dashboard</mat-icon> Dashboard
-      </a>
-      <a mat-list-item [ngClass]="{'selected': isPath('/hero/list')}" [routerLink]="[ '/hero/list' ]">
-        <mat-icon>format_list_numbered</mat-icon> Hero List
-      </a>
-      <a mat-list-item [ngClass]="{'selected': isPath('/hero/tops')}" [routerLink]="[ '/hero/tops' ]">
-        <mat-icon>whatshot</mat-icon> Tops Hero
-      </a>
-      <a mat-list-item [ngClass]="{'selected': isPath('/about')}" [routerLink]="[ '/about' ]">
-        <mat-icon>info_outline</mat-icon> About
-      </a> -->
     </mat-nav-list>
   </mat-expansion-panel>
 

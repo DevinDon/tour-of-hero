@@ -1,11 +1,9 @@
 @import "../../../theme/variable.scss";
 
-section.list {
+section {
   display: flex;
   flex-direction: column;
-  flex-wrap: wrap;
   > mat-card {
-    background-color: $color-white-dark;
     margin: 1rem;
     height: 10rem;
     display: flex;
