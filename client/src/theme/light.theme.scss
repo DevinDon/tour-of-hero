@@ -7,7 +7,7 @@
     mat-light-theme(mat-palette($mat-color-white), mat-palette($mat-color-black), mat-palette($mat-red))
   );
   @include mat-button-theme(
-    mat-light-theme(mat-palette($mat-color-black), mat-palette($mat-color-white), mat-palette($mat-red))
+    mat-light-theme(mat-palette($mat-color-black), mat-palette($mat-color-blue), mat-palette($mat-red))
   );
   @include mat-form-field-theme(
     mat-light-theme(mat-palette($mat-color-black), mat-palette($mat-color-white), mat-palette($mat-red))
