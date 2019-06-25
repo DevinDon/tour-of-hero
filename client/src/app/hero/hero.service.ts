@@ -10,7 +10,7 @@ import { Hero } from './hero.type';
 })
 export class HeroService {
 
-  private static API$HEROES = 'http://tour-of-hero-server:8080';
+  private static API$HEROES = 'https://api.don.red/tour-of-heroes';
 
   constructor(
     private app: AppService,
