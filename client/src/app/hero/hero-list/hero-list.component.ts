@@ -60,7 +60,7 @@ export class HeroListComponent implements OnInit {
   }
 
   prev() {
-    this.getLimit(this.page.offset = this.page.offset - this.page.limit < 0 ? 0 : this.page.offset - this.page.offset);
+    this.getLimit(this.page.offset -= (this.page.limit > this.page.offset ? 0 : this.page.limit));
   }
 
   next() {
