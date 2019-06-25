@@ -1,14 +1,14 @@
-<section>
-  <mat-card class="hero" *ngFor="let hero of heroes; trackBy: trackByFn">
+<section class="list">
+  <mat-card class="card" *ngFor="let hero of heroes; trackBy: trackByFn">
     <mat-card-header>
       <mat-card-title>{{ hero.id }}</mat-card-title>
       <mat-card-subtitle>{{ hero.name }}</mat-card-subtitle>
       <img mat-card-avatar src="assets/head-1.jpg" />
     </mat-card-header>
     <mat-card-content>
-      {{ 'Hero detail information.' }}
+      {{ hero.description || 'No description.' }}
     </mat-card-content>
-    <mat-card-actions>
+    <mat-card-actions class="action">
       <button mat-button (click)="like(hero.id)">
         <mat-icon>favorite_outline</mat-icon> {{ hero.like }}
       </button>
@@ -16,7 +16,7 @@
         <mat-icon>comment</mat-icon> {{ 10 }}
       </button>
       <button mat-button (click)="openDetail(hero.id)">
-        <mat-icon>aspect_ratio_outline</mat-icon>
+        <mat-icon>aspect_ratio</mat-icon>
       </button>
     </mat-card-actions>
   </mat-card>
