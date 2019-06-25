@@ -39,8 +39,8 @@ export class HeroDetailComponent implements OnInit {
     this.hero.description = this.formGroup.get('description').value;
     (
       this.hero.id === 0
-        ? this.service.update(this.formGroup.get('id').value, this.hero)
-        : this.service.add(this.hero)
+        ? this.service.add(this.hero)
+        : this.service.update(this.formGroup.get('id').value, this.hero)
     ).subscribe(v => {
       if (v.status) {
         this.app.openBar(`Hero ${this.hero.id}: ${this.hero.name} saved successfully.`);

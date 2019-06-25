@@ -53,7 +53,6 @@ export class AppComponent implements OnInit {
       .subscribe(v => {
         if (v instanceof NavigationEnd) {
           this.title = this.routes.find(route => route.path === v.urlAfterRedirects);
-
         }
       });
   }
