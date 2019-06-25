@@ -34,19 +34,21 @@ export class HeroDetailComponent implements OnInit {
     this.formGroup.get('id').disable();
   }
 
-  update() {
+  action() {
     this.hero.name = this.formGroup.get('name').value;
     this.hero.description = this.formGroup.get('description').value;
-    this.service
-      .update(this.formGroup.get('id').value, this.hero)
-      .subscribe(v => {
-        if (v.status) {
-          this.app.openBar(`Hero ${this.hero.id}: ${this.hero.name} saved successfully.`);
-        } else {
-          this.app.openBar(`Hero ${this.hero.id}: ${this.hero.name} saved failed.`);
-        }
-        this.dialog.close();
-      });
+    (
+      this.hero.id === 0
+        ? this.service.update(this.formGroup.get('id').value, this.hero)
+        : this.service.add(this.hero)
+    ).subscribe(v => {
+      if (v.status) {
+        this.app.openBar(`Hero ${this.hero.id}: ${this.hero.name} saved successfully.`);
+      } else {
+        this.app.openBar(`Hero ${this.hero.id}: ${this.hero.name} saved failed.`);
+      }
+      this.dialog.close();
+    });
   }
 
 }

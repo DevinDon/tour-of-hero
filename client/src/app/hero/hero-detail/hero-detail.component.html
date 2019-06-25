@@ -44,7 +44,8 @@
 </mat-dialog-content>
 
 <mat-dialog-actions>
-  <button mat-raised-button color="primary" (click)="update()"
-    [disabled]="app.status.loading || formGroup.invalid">Update</button>
+  <button mat-raised-button color="primary" (click)="action()" [disabled]="app.status.loading || formGroup.invalid">
+    {{ hero.id === 0 ? 'Add' : 'Update' }}
+  </button>
   <button mat-button mat-dialog-close color="warn">Cancel</button>
 </mat-dialog-actions>
