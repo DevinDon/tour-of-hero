@@ -9,6 +9,11 @@ export class HeroController {
   @Inject()
   private service!: HeroService;
 
+  @OPTIONS('/add')
+  addOptions() {
+    return '';
+  }
+
   @POST('/add')
   async add(@RequestBody() hero: Hero): Promise<BaseResponse<Hero>> {
     const result = await this.service.add(hero);
