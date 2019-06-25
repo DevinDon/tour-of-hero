@@ -3,18 +3,16 @@ version: '3.7'
 services:
 
   # PostgreSQL, backend ,expose 5432
-  tour-of-heroes-postgres:
+  tour-of-heroes-database:
     image: postgres
     environment:
       POSTGRES_USER: tour-of-heroes
       POSTGRES_PASSWORD: tour-of-heroes
       POSTGRES_DB: tour-of-heroes
     networks:
-      - backend
-    expose:
-      - "5432"
+      - overnet
     volumes:
-      - "tour-of-heroes-postgres:/var/lib/postgresql/data"
+      - "tour-of-heroes-database:/var/lib/postgresql/data"
     #   - ./config/postgresql:/etc/postgresql:ro
 
   # # Redis, backend, expose 6379
@@ -23,14 +21,15 @@ services:
   #   container_name: tour-of-heroes-redis
   #   networks:
   #     - backend
-  #   expose:
-  #     - "6379"
   #   # volumes:
   #   #   - ./config/redis:/etc/redis:ro
 
   # KBS, frontend & backend, expose 8080 - 8082
   tour-of-heroes-server:
-    build: registry.cn-shanghai.aliyuncs.com/iinfinity/node
+    image: tour-of-heroes-server
+    depends_on:
+      - tour-of-heroes-database
+      # - tour-of-heroes-redis
     deploy:
       mode: replicated
       replicas: 2
@@ -39,50 +38,40 @@ services:
         delay: 10s
         max_attempts: 5
         window: 10s
-    depends_on:
-      - tour-of-heroes-postgres
-      # - tour-of-heroes-redis
-    links:
-      - tour-of-heroes-postgres
-      # - tour-of-heroes-redis
     networks:
-      - frontend
-      - backend
-    expose:
-      - "8080"
-      - "8081"
-      - "8082"
-    volumes:
-      - "./server:/app:ro"
+      - overnet
+    # volumes:
+    #   - "./server:/app:ro"
 
   # Nginx, frontend & backend & hostnet, ports 80 & 443 & 13306(dev) & 16379(dev)
-  tour-of-heroes-nginx:
-    image: nginx
+  tour-of-heroes-client:
+    image: registry.cn-shanghai.aliyuncs.com/iinfinity/nginx:amd64
     depends_on:
       - tour-of-heroes-server
-    links:
-      - tour-of-heroes-postgres
-      # - tour-of-heroes-redis
-      - tour-of-heroes-server
+    deploy:
+      mode: replicated
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+        delay: 10s
+        max_attempts: 5
+        window: 10s
     networks:
-      - frontend
-      - backend
-      - hostnet
-    ports:
-      - "80:80"
-      - "443:443"
+      - overnet
+    # ports:
+      # - "80:80"
+      # - "443:443"
       # - "13306:3306"
       # - "15432:5432"
       # - "16379:6379"
     volumes:
-      # - "./etc/nginx/cert:/etc/nginx/cert:ro"
-      # - "./etc/nginx/conf.d:/etc/nginx/conf.d:ro"
-      - "./etc/nginx/http.d:/etc/nginx/http.d:ro"
-      # - "./etc/nginx/stream.d:/etc/nginx/stream.d:ro"
+      - "./etc/nginx:/etc/nginx:ro"
       - "./client:/app:ro"
 
 networks:
-  frontend:
-  backend:
-  hostnet:
+  overnet:
     external: true
+    name: overnet
+
+volumes:
+  tour-of-heroes-database:
