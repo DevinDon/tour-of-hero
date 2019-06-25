@@ -1,7 +1,7 @@
-import { Controller, DELETE, GET, Inject, PathQuery, PathVariable, PUT, RequestBody, POST, OPTIONS } from '@rester/core';
+import { Controller, DELETE, GET, Inject, OPTIONS, PathQuery, PathVariable, POST, PUT, RequestBody } from '@rester/core';
+import { BaseResponse, response } from '../model/response.model';
 import { Hero } from './hero.model';
 import { HeroService } from './hero.service';
-import { BaseResponse, response } from '../model/response.model';
 
 @Controller('/')
 export class HeroController {
@@ -9,12 +9,7 @@ export class HeroController {
   @Inject()
   private service!: HeroService;
 
-  @OPTIONS('/add')
-  addOptions() {
-    return '';
-  }
-
-  @PUT('/add')
+  @POST('/add')
   async add(@RequestBody() hero: Hero): Promise<BaseResponse<Hero>> {
     const result = await this.service.add(hero);
     return response({
