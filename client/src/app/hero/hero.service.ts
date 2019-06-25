@@ -21,6 +21,11 @@ export class HeroService {
     }
   }
 
+  add(hero: Hero): Observable<BaseResponse<Hero>> {
+    return this.http
+      .post<BaseResponse<Hero>>(HeroService.API$HEROES + '/add', hero);
+  }
+
   getAll(): Observable<BaseResponse<Hero[]>> {
     return this.http
       .get<BaseResponse<Hero[]>>(HeroService.API$HEROES + '/get/all');
