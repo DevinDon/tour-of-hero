@@ -13,6 +13,10 @@ export class HeroService {
     return result.identifiers[0] ? hero : undefined;
   }
 
+  count() {
+    return HeroEntity.count();
+  }
+
   delete(id: number) {
     return HeroEntity.delete(id);
   }

@@ -23,6 +23,14 @@ export class HeroController {
     });
   }
 
+  @GET('/count')
+  async count(): Promise<BaseResponse<number>> {
+    return response({
+      status: true,
+      content: await this.service.count()
+    });
+  }
+
   @OPTIONS('/delete/{{id}}')
   deleteOptions() {
     return '';

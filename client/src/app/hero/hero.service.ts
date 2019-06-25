@@ -26,6 +26,11 @@ export class HeroService {
       .post<BaseResponse<Hero>>(HeroService.API$HEROES + '/add', hero);
   }
 
+  count(): Observable<BaseResponse<number>> {
+    return this.http
+      .get<BaseResponse<number>>(HeroService.API$HEROES + '/count');
+  }
+
   getAll(): Observable<BaseResponse<Hero[]>> {
     return this.http
       .get<BaseResponse<Hero[]>>(HeroService.API$HEROES + '/get/all');
