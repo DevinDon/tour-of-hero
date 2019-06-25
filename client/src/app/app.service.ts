@@ -57,7 +57,7 @@ export class AppService {
     component: ComponentType<T> | TemplateRef<T>,
     config?: MatDialogConfig
   ) {
-    this.dialog.open(
+    return this.dialog.open(
       component,
       Object.assign(
         config || {},
