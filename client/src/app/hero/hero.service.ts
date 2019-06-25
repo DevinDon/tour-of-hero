@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
-import { delay, filter, mergeAll } from 'rxjs/operators';
+import { Injectable, isDevMode } from '@angular/core';
+import { Observable } from 'rxjs';
 import { AppService } from '../app.service';
 import { BaseResponse } from '../model/base.model';
 import { Hero } from './hero.type';
@@ -11,12 +10,16 @@ import { Hero } from './hero.type';
 })
 export class HeroService {
 
-  static readonly API$HEROES = 'http://localhost:8080';
+  private static API$HEROES = 'http://tour-of-hero-server:8080';
 
   constructor(
     private app: AppService,
     private http: HttpClient
-  ) { }
+  ) {
+    if (isDevMode()) {
+      HeroService.API$HEROES = 'http://localhost:8080';
+    }
+  }
 
   getAll(): Observable<BaseResponse<Hero[]>> {
     return this.http
