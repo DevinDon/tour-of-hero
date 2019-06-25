@@ -5,7 +5,7 @@
   flex-direction: column;
   > .card {
     margin: 1rem;
-    height: 10rem;
+    min-height: 10rem;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
