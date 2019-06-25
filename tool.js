@@ -70,8 +70,9 @@ async function pack(arch) {
   read([
     'server/dist/**/*.js',
     'server/package*.json',
-    'server/server.config.json'
-  ]).pipe(save('dist/server'));
+    'server/rester.config.json'
+  ], { allowEmpty: true }
+  ).pipe(save('dist/server'));
 }
 
 switch (task.toLowerCase()) {
