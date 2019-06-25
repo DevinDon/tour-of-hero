@@ -13,6 +13,7 @@ import { MaterialModule } from './module/material.module';
 import { OtherModule } from './module/other.module';
 import { RoutingModule } from './module/routing.module';
 import { LoadingInterceptor } from './other/loading.interceptor';
+import { HeroAddComponent } from './hero/hero-add/hero-add.component';
 
 @NgModule({
   bootstrap: [AppComponent],
@@ -22,7 +23,8 @@ import { LoadingInterceptor } from './other/loading.interceptor';
     HeroListComponent,
     HeroDetailComponent,
     HeroTopsComponent,
-    AboutComponent
+    AboutComponent,
+    HeroAddComponent
   ],
   entryComponents: [],
   imports: [

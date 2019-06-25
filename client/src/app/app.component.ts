@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { AppService } from './app.service';
-import { HeroDetailComponent } from './hero/hero-detail/hero-detail.component';
 
 interface Route {
   path: string;
@@ -59,10 +58,6 @@ export class AppComponent implements OnInit {
 
   trackByFn(index: number, item: Route) {
     return item.path;
-  }
-
-  add() {
-    this.app.openDialog(HeroDetailComponent, { data: { id: 0 } });
   }
 
 }
