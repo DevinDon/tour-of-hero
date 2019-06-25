@@ -1,59 +1,50 @@
-version: '3'
+version: '3.7'
 
 services:
 
-  # # MySQL, backend, expose 3306
-  # app-mysql:
-  #   image: mysql:5
-  #   container_name: app-mysql
-  #   environment:
-  #     MYSQL_ROOT_PASSWORD: app
-  #     MYSQL_DATABASE: app
-  #     MYSQL_USER: app
-  #     MYSQL_PASSWORD: app
-  #   networks:
-  #     - backend
-  #   expose:
-  #     - "3306"
-  #   volumes:
-  #     - ./config/mysql:/etc/mysql:ro
-
   # PostgreSQL, backend ,expose 5432
-  app-postgres:
+  tour-of-heroes-postgres:
     image: postgres
-    container_name: app-postgres
     environment:
-      POSTGRES_USER: app
-      POSTGRES_PASSWORD: app
-      POSTGRES_DB: app
+      POSTGRES_USER: tour-of-heroes
+      POSTGRES_PASSWORD: tour-of-heroes
+      POSTGRES_DB: tour-of-heroes
     networks:
       - backend
     expose:
       - "5432"
-    # volumes:
+    volumes:
+      - "tour-of-heroes-postgres:/var/lib/postgresql/data"
     #   - ./config/postgresql:/etc/postgresql:ro
 
-  # Redis, backend, expose 6379
-  app-redis:
-    image: redis
-    container_name: app-redis
-    networks:
-      - backend
-    expose:
-      - "6379"
-    # volumes:
-    #   - ./config/redis:/etc/redis:ro
+  # # Redis, backend, expose 6379
+  # tour-of-heroes-redis:
+  #   image: redis
+  #   container_name: tour-of-heroes-redis
+  #   networks:
+  #     - backend
+  #   expose:
+  #     - "6379"
+  #   # volumes:
+  #   #   - ./config/redis:/etc/redis:ro
 
   # KBS, frontend & backend, expose 8080 - 8082
-  app-server:
-    build: ./server
-    container_name: app-server
+  tour-of-heroes-server:
+    build: registry.cn-shanghai.aliyuncs.com/iinfinity/node
+    deploy:
+      mode: replicated
+      replicas: 2
+      restart_policy:
+        condition: on-failure
+        delay: 10s
+        max_attempts: 5
+        window: 10s
     depends_on:
-      - app-postgres
-      - app-redis
+      - tour-of-heroes-postgres
+      # - tour-of-heroes-redis
     links:
-      - app-postgres
-      - app-redis
+      - tour-of-heroes-postgres
+      # - tour-of-heroes-redis
     networks:
       - frontend
       - backend
@@ -62,18 +53,17 @@ services:
       - "8081"
       - "8082"
     volumes:
-      - ./client:/app/client:ro
+      - "./server:/app:ro"
 
   # Nginx, frontend & backend & hostnet, ports 80 & 443 & 13306(dev) & 16379(dev)
-  app-nginx:
+  tour-of-heroes-nginx:
     image: nginx
-    container_name: app-nginx
     depends_on:
-      - app-server
+      - tour-of-heroes-server
     links:
-      - app-postgres
-      - app-redis
-      - app-server
+      - tour-of-heroes-postgres
+      # - tour-of-heroes-redis
+      - tour-of-heroes-server
     networks:
       - frontend
       - backend
@@ -82,11 +72,14 @@ services:
       - "80:80"
       - "443:443"
       # - "13306:3306"
-      - "15432:5432"
-      - "16379:6379"
+      # - "15432:5432"
+      # - "16379:6379"
     volumes:
-      - ./config/nginx:/etc/nginx:ro
-      - ./client:/app:ro
+      # - "./etc/nginx/cert:/etc/nginx/cert:ro"
+      # - "./etc/nginx/conf.d:/etc/nginx/conf.d:ro"
+      - "./etc/nginx/http.d:/etc/nginx/http.d:ro"
+      # - "./etc/nginx/stream.d:/etc/nginx/stream.d:ro"
+      - "./client:/app:ro"
 
 networks:
   frontend:
