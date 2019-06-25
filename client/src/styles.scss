@@ -2,6 +2,10 @@
 @import "theme/index.scss";
 
 body {
+  p {
+    word-wrap: break-word;
+    word-break: break-all;
+  }
   form {
     &.column {
       display: flex;
