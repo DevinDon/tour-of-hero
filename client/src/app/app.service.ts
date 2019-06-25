@@ -21,8 +21,8 @@ export class AppService {
   };
 
   constructor(
-    private bar: MatSnackBar,
-    private dialog: MatDialog
+    public bar: MatSnackBar,
+    public dialog: MatDialog
   ) {
     this.subjections.loading.subject
       .pipe(auditTime(16))
@@ -46,7 +46,7 @@ export class AppService {
       verticalPosition: 'bottom'
     }
   ) {
-    this.bar.open(message, action, config);
+    return this.bar.open(message, action, config);
   }
 
   closeBar() {
