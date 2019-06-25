@@ -7,11 +7,11 @@
 </mat-list>
 
 <div class="buttons">
-  <button mat-button (click)="prev()" [disabled]="app.status.loading !== 0">
+  <button mat-button (click)="prev()" [disabled]="app.status.loading !== 0 || pagination.current < 2">
     <mat-icon>keyboard_arrow_left</mat-icon> Prev
   </button>
-  <span>{{ page.offset + 1 }} to {{ page.offset + page.limit }}</span>
-  <button mat-button (click)="next()" [disabled]="app.status.loading !== 0">
+  <span>{{ pagination.current }} / {{ pagination.total }}</span>
+  <button mat-button (click)="next()" [disabled]="app.status.loading !== 0 || pagination.current === pagination.total">
     Next <mat-icon>keyboard_arrow_right</mat-icon>
   </button>
 </div>

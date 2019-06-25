@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { AppService } from 'src/app/app.service';
+import { HeroDetailComponent } from '../hero-detail/hero-detail.component';
 import { HeroService } from '../hero.service';
 import { Hero } from '../hero.type';
-import { HeroDetailComponent } from '../hero-detail/hero-detail.component';
 
 @Component({
   selector: 'app-hero-list',
@@ -11,27 +12,46 @@ import { HeroDetailComponent } from '../hero-detail/hero-detail.component';
 })
 export class HeroListComponent implements OnInit {
 
-  public page = {
+  public pagination = {
     offset: 0,
-    limit: 15
+    limit: 15,
+    count: 0,
+    current: 0,
+    total: 0
   };
   public heroes: Hero[] = [];
 
   constructor(
     public app: AppService,
-    private service: HeroService
+    private service: HeroService,
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit() {
-    this.getLimit();
+    this.getCount();
+    this.getLimit((+this.route.snapshot.paramMap.get('page') - 1) * this.pagination.limit);
   }
 
-  getLimit(offset: number = this.page.offset, limit: number = this.page.limit) {
+  getCount() {
+    this.service
+      .count()
+      .subscribe((v) => {
+        if (v.status) {
+          this.pagination.count = v.content;
+          this.pagination.total = Math.ceil(this.pagination.count / this.pagination.limit);
+        } else {
+          this.app.openBar(`Cannot count heroes number.`);
+        }
+      });
+  }
+
+  getLimit(offset: number = this.pagination.offset, limit: number = this.pagination.limit) {
     this.service
       .getLimit(offset, limit)
       .subscribe(v => {
         if (v.status) {
           this.heroes = v.content.sort((a, b) => a.id - b.id);
+          this.pagination.current = Math.ceil(this.pagination.offset / this.pagination.limit + 1);
         } else {
           this.app.openBar(`Cannot get heroes data, from ${offset + 1} to ${offset + limit}.`);
         }
@@ -49,6 +69,7 @@ export class HeroListComponent implements OnInit {
         if (v.status) {
           this.app.openBar(`Hero ${id} has been deleted.`);
           this.heroes.splice(this.heroes.findIndex(value => value.id === id), 1);
+          this.getCount();
         } else {
           this.app.openBar(`Hero ${id} deleted failed.`);
         }
@@ -60,11 +81,13 @@ export class HeroListComponent implements OnInit {
   }
 
   prev() {
-    this.getLimit(this.page.offset -= (this.page.limit > this.page.offset ? 0 : this.page.limit));
+    this.getCount();
+    this.getLimit(this.pagination.offset -= (this.pagination.limit > this.pagination.offset ? 0 : this.pagination.limit));
   }
 
   next() {
-    this.getLimit(this.page.offset += this.page.limit);
+    this.getCount();
+    this.getLimit(this.pagination.offset += this.pagination.limit);
   }
 
 }
