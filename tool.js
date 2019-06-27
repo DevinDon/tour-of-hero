@@ -68,7 +68,7 @@ async function pack(arch) {
   read([
     'server/dist/**/*.js',
     'server/package*.json',
-    'server/rester.config.json'
+    'server/rester.json'
   ], { allowEmpty: true }
   ).pipe(save('dist/server'));
 }
