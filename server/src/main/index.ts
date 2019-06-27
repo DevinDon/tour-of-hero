@@ -1,7 +1,6 @@
-import { Rester } from '@rester/core';
+import { CORSHandler, Rester } from '@rester/core';
 import { HeroController } from './hero/hero.controller';
 import { HeroEntity } from './hero/hero.entity';
-import { CORSHandler } from './handler/cors.handler';
 
 const rester = new Rester()
   .configAddress
@@ -14,11 +13,11 @@ const rester = new Rester()
   .end()
   .configDatabase
   .setType('postgres')
-  .setHost('tour-of-heroes-database')
+  .setHost('t-1.don.red')
   .setPort(5432)
-  .setDatabase('tour-of-heroes')
-  .setUsername('tour-of-heroes')
-  .setPassword('tour-of-heroes')
+  .setDatabase('shared')
+  .setUsername('shared')
+  .setPassword('shared')
   .setEntities([HeroEntity])
   .setLogging(true)
   .setSynchronize(true)

@@ -1,4 +1,4 @@
-import { Controller, DELETE, GET, Inject, OPTIONS, PathQuery, PathVariable, POST, PUT, RequestBody } from '@rester/core';
+import { Controller, DELETE, GET, Inject, PathQuery, PathVariable, POST, PUT, RequestBody } from '@rester/core';
 import { BaseResponse, response } from '../model/response.model';
 import { Hero } from './hero.model';
 import { HeroService } from './hero.service';
@@ -8,11 +8,6 @@ export class HeroController {
 
   @Inject()
   private service!: HeroService;
-
-  @OPTIONS('/add')
-  addOptions() {
-    return '';
-  }
 
   @POST('/add')
   async add(@RequestBody() hero: Hero): Promise<BaseResponse<Hero>> {
@@ -31,11 +26,6 @@ export class HeroController {
     });
   }
 
-  @OPTIONS('/delete/{{id}}')
-  deleteOptions() {
-    return '';
-  }
-
   @DELETE('/delete/{{id}}')
   async delete(@PathVariable('id') id: number): Promise<BaseResponse> {
     const result = await this.service.delete(+id);
@@ -43,11 +33,6 @@ export class HeroController {
       status: Boolean(result.affected),
       content: id
     });
-  }
-
-  @OPTIONS('/delete/more')
-  deleteMoreOptions() {
-    return '';
   }
 
   @DELETE('/delete/more')
@@ -115,11 +100,6 @@ export class HeroController {
       status: true,
       content: result
     });
-  }
-
-  @OPTIONS('/update/{{id}}')
-  updateOneOptions() {
-    return '';
   }
 
   @PUT('/update/{{id}}')
