@@ -63,10 +63,8 @@ async function pack(arch) {
   //   .on('error', catchError)
   //   .pipe(gulpConcat('docker-compose.yml'))
   //   .pipe(save('dist'));
-  read(`docker/**/*`)
-    .pipe(save('dist'))
-  read(`client/dist/**/*`)
-    .pipe(save('dist/client'));
+  read(`docker/**/*`).pipe(save('dist'));
+  read(`client/dist/**/*`).pipe(save('dist/client'));
   read([
     'server/dist/**/*.js',
     'server/package*.json',
