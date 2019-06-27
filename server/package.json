@@ -28,7 +28,7 @@
   "license": "MIT",
   "private": true,
   "dependencies": {
-    "@rester/core": "0.8.2",
+    "@rester/core": "0.9.3",
     "pg": "7.11.0"
   },
   "devDependencies": {
@@ -37,7 +37,7 @@
     "jasmine": "3.4.0",
     "jasmine-console-reporter": "3.1.0",
     "ts-node": "8.2.0",
-    "typescript": "3.5.1"
+    "typescript": "3.5.2"
   },
   "repository": {
     "type": "git",
