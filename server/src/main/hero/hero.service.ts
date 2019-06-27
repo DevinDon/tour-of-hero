@@ -53,13 +53,13 @@ export class HeroService {
   }
 
   async like(id: number): Promise<number | undefined> {
-    const hero = await HeroEntity.findOne(id);
-    if (hero) {
-      hero.like++;
-      this.liked++;
-      await HeroEntity.update(id, hero);
-      return hero.like;
-    }
+    await HeroEntity
+      .createQueryBuilder()
+      .update()
+      .set({ like: () => '"like" + 1' })
+      .where('id = :id', { id })
+      .execute();
+    return HeroEntity.findOne(id).then(v => v ? v.like : -1);
   }
 
   async comment(id: number, message: string) {
