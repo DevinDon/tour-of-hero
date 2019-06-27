@@ -28,7 +28,7 @@
   "license": "MIT",
   "private": true,
   "dependencies": {
-    "@rester/core": "0.9.3",
+    "@rester/core": "0.9.4",
     "pg": "7.11.0"
   },
   "devDependencies": {
