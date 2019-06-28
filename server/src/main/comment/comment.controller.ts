@@ -25,6 +25,14 @@ export class CommentController {
     });
   }
 
+  @GET('/count/{{belong}}')
+  async count(@PathVariable('belong') belong: number) {
+    return response({
+      status: true,
+      content: await this.service.count(+belong)
+    });
+  }
+
   @GET('/hero/{{belong}}/{{offset}}')
   async getAboutHero(@PathVariable('belong') belong: number, @PathVariable('offset') offset: number): Promise<BaseResponse<Comment[]>> {
     return response({

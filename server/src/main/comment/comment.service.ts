@@ -10,6 +10,11 @@ export class CommentService {
       .then(result => result.identifiers[0] ? comment : undefined);
   }
 
+  count(belong: number): Promise<number> {
+    return CommentEntity
+      .count({ where: { belong } });
+  }
+
   getAboutHero(belong: number, offset: number): Promise<Comment[]> {
     return CommentEntity
       .find({ where: { belong }, take: 10, skip: offset, order: { date: 'DESC' } });
