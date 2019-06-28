@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { AppService } from 'src/app/app.service';
 import { HeroDetailComponent } from '../hero-detail/hero-detail.component';
 import { HeroService } from '../hero.service';
-import { Hero } from '../hero.type';
+import { Hero } from '../hero.model';
 
 @Component({
   selector: 'app-hero-list',

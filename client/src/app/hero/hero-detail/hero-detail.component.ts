@@ -3,7 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { AppService } from 'src/app/app.service';
 import { HeroService } from '../hero.service';
-import { Hero } from '../hero.type';
+import { Hero } from '../hero.model';
 
 @Component({
   selector: 'app-hero-detail',
