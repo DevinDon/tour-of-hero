@@ -29,8 +29,8 @@ export class HeroService {
     return HeroEntity.findOne(id);
   }
 
-  async getLimit(offset: number, limit: number) {
-    return await HeroEntity.find({ skip: offset, take: limit, order: { id: 'ASC' } });
+  getLimit(offset: number, limit: number) {
+    return HeroEntity.find({ skip: offset, take: limit, order: { id: 'ASC' } });
   }
 
   getMore(ids: number[]) {
@@ -46,10 +46,8 @@ export class HeroService {
   }
 
   async update(id: number, hero: Hero): Promise<Hero | undefined> {
-    if (await HeroEntity.findOne(id)) {
-      await HeroEntity.update(id, hero);
-      return await HeroEntity.findOne(id);
-    }
+    await HeroEntity.update(id, hero);
+    return HeroEntity.findOne(id);
   }
 
   async like(id: number): Promise<number | undefined> {
