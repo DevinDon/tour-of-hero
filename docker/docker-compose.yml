@@ -2,18 +2,18 @@ version: '3.7'
 
 services:
 
-  # PostgreSQL, backend ,expose 5432
-  tour-of-heroes-database:
-    image: postgres
-    environment:
-      POSTGRES_USER: tour-of-heroes
-      POSTGRES_PASSWORD: tour-of-heroes
-      POSTGRES_DB: tour-of-heroes
-    networks:
-      - overnet
-    volumes:
-      - "tour-of-heroes-database:/var/lib/postgresql/data"
-    #   - ./config/postgresql:/etc/postgresql:ro
+  # # PostgreSQL, backend ,expose 5432
+  # tour-of-heroes-database:
+  #   image: postgres
+  #   environment:
+  #     POSTGRES_USER: tour-of-heroes
+  #     POSTGRES_PASSWORD: tour-of-heroes
+  #     POSTGRES_DB: tour-of-heroes
+  #   networks:
+  #     - overnet
+  #   volumes:
+  #     - "tour-of-heroes-database:/var/lib/postgresql/data"
+  #   #   - ./config/postgresql:/etc/postgresql:ro
 
   # # Redis, backend, expose 6379
   # tour-of-heroes-redis:
@@ -27,9 +27,6 @@ services:
   # KBS, frontend & backend, expose 8080 - 8082
   tour-of-heroes-server:
     image: tour-of-heroes-server
-    depends_on:
-      - tour-of-heroes-database
-      # - tour-of-heroes-redis
     deploy:
       mode: replicated
       replicas: 1
@@ -40,14 +37,13 @@ services:
         window: 10s
     networks:
       - overnet
-    # volumes:
-    #   - "./server:/app:ro"
+    volumes:
+      - "./server:/app:ro"
+      - "tour-of-heroes-server:/app/db"
 
   # Nginx, frontend & backend & hostnet, ports 80 & 443 & 13306(dev) & 16379(dev)
   tour-of-heroes-client:
     image: registry.cn-shanghai.aliyuncs.com/iinfinity/nginx:amd64
-    depends_on:
-      - tour-of-heroes-server
     deploy:
       mode: replicated
       replicas: 1
@@ -74,4 +70,5 @@ networks:
     name: overnet
 
 volumes:
-  tour-of-heroes-database:
+  # tour-of-heroes-database:
+  tour-of-heroes-server:
