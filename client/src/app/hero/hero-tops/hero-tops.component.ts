@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { AppService } from 'src/app/app.service';
 import { CommentComponent } from 'src/app/comment/comment.component';
 import { HeroDetailComponent } from '../hero-detail/hero-detail.component';
-import { HeroService } from '../hero.service';
 import { Hero } from '../hero.model';
+import { HeroService } from '../hero.service';
 
 @Component({
   selector: 'app-hero-top',
@@ -12,7 +12,8 @@ import { Hero } from '../hero.model';
 })
 export class HeroTopsComponent implements OnInit {
 
-  heroes: Hero[] = [];
+  public count: { [index: number]: number } = {};
+  public heroes: Hero[] = [];
 
   constructor(
     private app: AppService,
@@ -27,11 +28,25 @@ export class HeroTopsComponent implements OnInit {
     return item.id;
   }
 
+  getCommentCount(belong: number) {
+    this.service
+      .countComment(belong)
+      .subscribe(result => {
+        if (result.status) {
+          this.count[belong] = result.content;
+        } else {
+          this.app.openBar(`Cannot get comment count of hero ${belong}.`);
+        }
+      });
+  }
+
   getTop() {
     this.service.getTop()
-      .subscribe(v => {
-        if (v.status) {
-          this.heroes = v.content.sort((a, b) => b.like - a.like);
+      .subscribe(result => {
+        if (result.status) {
+          this.heroes = result.content
+            .map(hero => (this.getCommentCount(hero.id), hero))
+            .sort((a, b) => b.like - a.like);
         } else {
           this.app.openBar('Cannot get top heroes data.');
         }
@@ -41,10 +56,10 @@ export class HeroTopsComponent implements OnInit {
   like(id: number) {
     this.service
       .like(id)
-      .subscribe(v => {
-        if (v.status) {
-          this.app.openBar(`Total liked: ${v.content}.`);
-          this.heroes.find(value => value.id === id).like = v.content;
+      .subscribe(result => {
+        if (result.status) {
+          this.app.openBar(`Total liked: ${result.content}.`);
+          this.heroes.find(value => value.id === id).like = result.content;
         } else {
           this.app.openBar('Liked failed.');
         }

@@ -25,6 +25,11 @@ export class HeroService {
       .get<BaseResponse<number>>(AppService.API$HOST + '/count');
   }
 
+  countComment(belong: number) {
+    return this.http
+      .get<BaseResponse<number>>(AppService.API$HOST + `/comment/count/${belong}`);
+  }
+
   getAll(): Observable<BaseResponse<Hero[]>> {
     return this.http
       .get<BaseResponse<Hero[]>>(AppService.API$HOST + '/get/all');
