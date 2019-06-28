@@ -10,7 +10,6 @@ import { HeroService } from './hero.service';
 
 @NgModule({
   declarations: [
-    HeroAddComponent,
     HeroDetailComponent,
     HeroListComponent,
     HeroTopsComponent
@@ -19,6 +18,9 @@ import { HeroService } from './hero.service';
     CommonModule,
     MaterialModule,
     OtherModule
+  ],
+  exports: [
+    HeroAddComponent
   ],
   providers: [
     HeroService
