@@ -15,8 +15,8 @@
   "scripts": {
     "build": "tsc",
     "debug": "node --inspect-brk -r ts-node/register src/main/index.ts",
-    "demo": "node -r ts-node/register src/demo/index.ts",
-    "dist": "node dist",
+    "dev": "bash -c \"MODE=DEV node -r ts-node/register src/main/index.ts\"",
+    "dist": "bash -c \"MODE=PROD node dist\"",
     "start": "npm run build && npm run dist",
     "test": "node node_modules/jasmine/bin/jasmine.js --config=src/test/jasmine.json --reporter=jasmine-console-reporter --require=ts-node/register"
   },
@@ -28,7 +28,7 @@
   "license": "MIT",
   "private": true,
   "dependencies": {
-    "@rester/core": "0.9.4",
+    "@rester/core": "0.9.5",
     "sqlite3": "^4.0.9"
   },
   "devDependencies": {
