@@ -1,5 +1,5 @@
 import { ComponentType } from '@angular/cdk/portal';
-import { Injectable, TemplateRef } from '@angular/core';
+import { Injectable, TemplateRef, isDevMode } from '@angular/core';
 import { MatDialog, MatDialogConfig, MatSnackBar, MatSnackBarConfig } from '@angular/material';
 import { Subject } from 'rxjs';
 import { auditTime } from 'rxjs/operators';
@@ -9,7 +9,9 @@ import { auditTime } from 'rxjs/operators';
 })
 export class AppService {
 
-  status = {
+  public static API$HOST = 'https://api.don.red/tour-of-heroes';
+
+  public status = {
     loading: 0
   };
 
@@ -24,6 +26,9 @@ export class AppService {
     public bar: MatSnackBar,
     public dialog: MatDialog
   ) {
+    if (isDevMode()) {
+      AppService.API$HOST = 'http://localhost:8080';
+    }
     this.subjections.loading.subject
       .pipe(auditTime(16))
       .subscribe(v => this.status.loading = v);
