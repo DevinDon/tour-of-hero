@@ -16,8 +16,15 @@ export class CommentService {
   }
 
   async getAboutReply(reply: number, offset: number): Promise<Comment[]> {
-    return CommentEntity
-      .find({ where: { reply }, take: 10, skip: offset, order: { date: 'DESC' } });
+    const origin = await CommentEntity.findOne(reply);
+    if (origin) {
+      const result = await CommentEntity
+        .find({ where: { reply }, take: 10, skip: offset, order: { date: 'DESC' } });
+      result.unshift(origin);
+      return result;
+    } else {
+      return [];
+    }
   }
 
   async getReplyOrigin(id: number): Promise<Comment[]> {
