@@ -5,6 +5,7 @@
     <img matListAvatar src="assets/head-1.jpg" />
     <p matLine class="date">{{ comment.date | date:"MM-dd HH:mm" }}</p>
     <p matLine class="content">{{ comment.content }}</p>
+    <p matLine class="reply" *ngIf="comment.reply">View replies</p>
     <button mat-icon-button>
       <mat-icon>more_horiz</mat-icon>
       <!-- more_vert -->
