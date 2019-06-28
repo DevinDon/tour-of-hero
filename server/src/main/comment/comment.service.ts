@@ -20,12 +20,12 @@ export class CommentService {
       } else {
         break;
       }
-    } while (result.length < 5 && id);
+    } while (result.length < 10 && id);
     return result;
   }
 
-  getAboutHero(belong: number) {
-    return CommentEntity.find({ where: { belong }, take: 10 });
+  getAboutHero(belong: number, offset: number) {
+    return CommentEntity.find({ where: { belong }, take: 10, skip: offset });
   }
 
   async like(id: number): Promise<number> {

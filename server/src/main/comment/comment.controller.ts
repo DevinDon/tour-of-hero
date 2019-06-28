@@ -33,11 +33,11 @@ export class CommentController {
     });
   }
 
-  @GET('/hero/{{belong}}')
-  async getAboutHero(@PathVariable('belong') belong: number) {
+  @GET('/hero/{{belong}}/{{offset}}')
+  async getAboutHero(@PathVariable('belong') belong: number, @PathVariable('offset') offset: number) {
     return response({
       status: true,
-      content: await this.service.getAboutHero(+belong)
+      content: await this.service.getAboutHero(+belong, +offset)
     });
   }
 
