@@ -20,3 +20,22 @@
 <ng-template #noMoreTemplate>
   <p class="end">No more comments.</p>
 </ng-template>
+
+<form class="comment" [formGroup]="form">
+  <mat-form-field>
+    <input matInput formControlName="comment">
+    <mat-placeholder>
+      <mat-icon>comment</mat-icon> Comment
+    </mat-placeholder>
+    <mat-hint>
+      <mat-icon>comment</mat-icon> Input your comment
+    </mat-hint>
+    <mat-error *ngIf="form.get('comment').hasError('maxlength')">
+      <mat-icon>block</mat-icon> Comment is up to 250
+    </mat-error>
+  </mat-form-field>
+  <button mat-icon-button
+    [disabled]="form.invalid || app.status.loading !== 0 || form.get('comment').value.length === 0" (click)="add()">
+    <mat-icon>send</mat-icon>
+  </button>
+</form>
