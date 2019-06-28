@@ -15,6 +15,14 @@ export class CommentService {
       .count({ where: { belong } });
   }
 
+  async counts(belongs: number[]): Promise<number[]> {
+    const result: number[] = [];
+    for await (const belong of belongs) {
+      result.push(await CommentEntity.count({ where: { belong } }));
+    }
+    return result;
+  }
+
   getAboutHero(belong: number, offset: number): Promise<Comment[]> {
     return CommentEntity
       .find({ where: { belong }, take: 10, skip: offset, order: { date: 'DESC' } });

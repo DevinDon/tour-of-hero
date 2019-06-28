@@ -33,6 +33,14 @@ export class CommentController {
     });
   }
 
+  @GET('/counts/{{belongs}}')
+  async counts(@PathVariable('belongs') belongs: number[]) {
+    return response({
+      status: true,
+      content: await this.service.counts(belongs)
+    });
+  }
+
   @GET('/hero/{{belong}}/{{offset}}')
   async getAboutHero(@PathVariable('belong') belong: number, @PathVariable('offset') offset: number): Promise<BaseResponse<Comment[]>> {
     return response({
