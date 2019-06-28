@@ -1,0 +1,11 @@
+<mat-list>
+  <mat-list-item *ngFor="let comment of comments">
+    <img matListAvatar src="assets/head-1.jpg" />
+    <p matLine class="date">{{ comment.date | date:"MM-dd HH:mm" }}</p>
+    <p matLine class="content">{{ comment.content }}</p>
+    <button mat-icon-button>
+      <mat-icon>more_horiz</mat-icon>
+      <!-- more_vert -->
+    </button>
+  </mat-list-item>
+</mat-list>

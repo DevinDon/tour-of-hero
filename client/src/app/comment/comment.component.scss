@@ -1,0 +1,11 @@
+@import "../../theme/variable.scss";
+
+.date {
+  color: $color-gray;
+  font-size: x-small !important;
+}
+
+.content {
+  max-height: 3rem;
+  white-space: normal !important;
+}
