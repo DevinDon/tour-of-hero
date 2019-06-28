@@ -40,13 +40,24 @@ export class HeroTopsComponent implements OnInit {
       });
   }
 
+  getCommentCounts(belongs: number[]) {
+    this.service
+      .countComments(belongs)
+      .subscribe(result => {
+        if (result.status) {
+          this.count = result.content;
+        } else {
+          this.app.openBar(`Cannot get comment count of heroes ${belongs}.`);
+        }
+      });
+  }
+
   getTop() {
     this.service.getTop()
       .subscribe(result => {
         if (result.status) {
-          this.heroes = result.content
-            .map(hero => (this.getCommentCount(hero.id), hero))
-            .sort((a, b) => b.like - a.like);
+          this.heroes = result.content.sort((a, b) => b.like - a.like);
+          this.getCommentCounts(this.heroes.map(hero => hero.id));
         } else {
           this.app.openBar('Cannot get top heroes data.');
         }
