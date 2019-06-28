@@ -19,9 +19,9 @@ export class CommentService {
       .post<BaseResponse<Comment>>(AppService.API$HOST + '/comment/add', comment);
   }
 
-  getAboutHero(belong: number) {
+  getAboutHero(belong: number, offset: number) {
     return this.http
-      .get<BaseResponse<Comment[]>>(AppService.API$HOST + `/comment/hero/${belong}`);
+      .get<BaseResponse<Comment[]>>(AppService.API$HOST + `/comment/hero/${belong}/${offset}`);
   }
 
 }

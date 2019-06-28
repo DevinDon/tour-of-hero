@@ -14,4 +14,9 @@
   </mat-list-item>
 </mat-list>
 
-<p class="end">No more comments.</p>
+<ng-container *ngIf="hasMore; else noMoreTemplate">
+  <button mat-button class="end" (click)="getMoreComments()">Load more...</button>
+</ng-container>
+<ng-template #noMoreTemplate>
+  <p class="end">No more comments.</p>
+</ng-template>

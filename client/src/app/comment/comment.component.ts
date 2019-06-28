@@ -13,6 +13,7 @@ import { CommentService } from './comment.service';
 export class CommentComponent implements OnInit {
 
   public comments: Comment[] = [];
+  public hasMore = true;
 
   constructor(
     private app: AppService,
@@ -21,13 +22,19 @@ export class CommentComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.getMoreComments();
+  }
+
+  getMoreComments() {
     this.service
-      .getAboutHero(this.hero.id)
+      .getAboutHero(this.hero.id, this.comments.length)
       .subscribe(result => {
         if (result.status) {
-          this.comments = result.content;
+          this.comments = this.comments.concat(result.content);
+          this.hasMore = result.content.length === 10;
         } else {
           this.app.openBar(`Cannot get comments of hero ${this.hero.name}.`);
+          this.hasMore = false;
         }
       });
   }
