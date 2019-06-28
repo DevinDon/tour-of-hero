@@ -26,7 +26,7 @@ export class CommentController {
   }
 
   @GET('/count/{{belong}}')
-  async count(@PathVariable('belong') belong: number) {
+  async count(@PathVariable('belong') belong: number): Promise<BaseResponse<number>> {
     return response({
       status: true,
       content: await this.service.count(+belong)
@@ -34,10 +34,10 @@ export class CommentController {
   }
 
   @GET('/counts/{{belongs}}')
-  async counts(@PathVariable('belongs') belongs: number[]) {
+  async counts(@PathVariable('belongs') belongs: string): Promise<BaseResponse<{ [index: number]: number }>> {
     return response({
       status: true,
-      content: await this.service.counts(belongs)
+      content: await this.service.counts(belongs.split(',').map(belong => +belong))
     });
   }
 

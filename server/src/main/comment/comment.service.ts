@@ -15,10 +15,10 @@ export class CommentService {
       .count({ where: { belong } });
   }
 
-  async counts(belongs: number[]): Promise<number[]> {
-    const result: number[] = [];
+  async counts(belongs: number[]): Promise<{ [index: number]: number }> {
+    const result: { [index: number]: number } = [];
     for await (const belong of belongs) {
-      result.push(await CommentEntity.count({ where: { belong } }));
+      result[belong] = await CommentEntity.count({ where: { belong } });
     }
     return result;
   }
