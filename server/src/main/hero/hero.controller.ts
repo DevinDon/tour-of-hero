@@ -1,6 +1,6 @@
 import { Controller, DELETE, GET, Inject, PathQuery, PathVariable, POST, PUT, RequestBody } from '@rester/core';
 import { BaseResponse, response } from '../model/response.model';
-import { Hero } from './hero.model';
+import { Hero } from './hero.entity';
 import { HeroService } from './hero.service';
 
 @Controller('/')
@@ -30,7 +30,7 @@ export class HeroController {
   async delete(@PathVariable('id') id: number): Promise<BaseResponse> {
     const result = await this.service.delete(+id);
     return response({
-      status: Boolean(result.affected),
+      status: Boolean(result.raw),
       content: id
     });
   }

@@ -1,5 +1,11 @@
 import { BaseEntity, Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
-import { Hero } from './hero.model';
+
+export interface Hero {
+  id: number;
+  name: string;
+  description?: string;
+  like: number;
+}
 
 @Entity('hero')
 export class HeroEntity extends BaseEntity implements Hero {

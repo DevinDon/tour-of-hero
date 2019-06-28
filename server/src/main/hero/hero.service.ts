@@ -1,6 +1,5 @@
 import { Service } from '@rester/core';
-import { HeroEntity } from './hero.entity';
-import { Hero } from './hero.model';
+import { Hero, HeroEntity } from './hero.entity';
 
 @Service()
 export class HeroService {
@@ -8,9 +7,10 @@ export class HeroService {
   private liked = 0;
   private commented = 0;
 
-  async add(hero: Hero) {
-    const result = await HeroEntity.insert(hero);
-    return result.identifiers[0] ? hero : undefined;
+  add(hero: Hero): Promise<Hero | undefined> {
+    return HeroEntity
+      .insert(hero)
+      .then(result => result.identifiers[0] ? hero : undefined);
   }
 
   count() {
@@ -57,7 +57,9 @@ export class HeroService {
       .set({ like: () => '"like" + 1' })
       .where('id = :id', { id })
       .execute();
-    return HeroEntity.findOne(id).then(v => v ? v.like : -1);
+    return HeroEntity
+      .findOne(id)
+      .then(result => result ? result.like : -1);
   }
 
   async comment(id: number, message: string) {
