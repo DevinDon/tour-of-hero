@@ -24,4 +24,9 @@ export class CommentService {
       .get<BaseResponse<Comment[]>>(AppService.API$HOST + `/comment/hero/${belong}/${offset}`);
   }
 
+  getAboutReply(reply: number, offset: number) {
+    return this.http
+      .get<BaseResponse<Comment[]>>(AppService.API$HOST + `/comment/${reply}/${offset}`);
+  }
+
 }

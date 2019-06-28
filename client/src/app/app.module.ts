@@ -15,6 +15,7 @@ import { MaterialModule } from './module/material.module';
 import { OtherModule } from './module/other.module';
 import { RoutingModule } from './module/routing.module';
 import { LoadingInterceptor } from './other/loading.interceptor';
+import { CommentReplyComponent } from './comment/comment-reply/comment-reply.component';
 
 @NgModule({
   bootstrap: [AppComponent],
@@ -26,7 +27,8 @@ import { LoadingInterceptor } from './other/loading.interceptor';
     HeroTopsComponent,
     AboutComponent,
     HeroAddComponent,
-    CommentComponent
+    CommentComponent,
+    CommentReplyComponent
   ],
   entryComponents: [],
   imports: [
