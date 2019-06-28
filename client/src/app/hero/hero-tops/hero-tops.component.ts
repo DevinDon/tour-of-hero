@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { AppService } from 'src/app/app.service';
+import { CommentComponent } from 'src/app/comment/comment.component';
 import { HeroDetailComponent } from '../hero-detail/hero-detail.component';
 import { HeroService } from '../hero.service';
-import { Hero } from '../hero.type';
+import { Hero } from '../hero.model';
 
 @Component({
   selector: 'app-hero-top',
@@ -49,8 +50,22 @@ export class HeroTopsComponent implements OnInit {
       });
   }
 
-  openDetail(id: number) {
-    this.app.openDialog(HeroDetailComponent, { data: this.heroes.find(v => v.id === id) });
+  openComment(hero: Hero) {
+    this.app.openDialog(CommentComponent, {
+      autoFocus: false,
+      data: hero,
+      position: {
+        bottom: '0',
+        left: '0'
+      },
+      width: '100vw',
+      height: '90vh',
+      panelClass: 'fullable'
+    });
+  }
+
+  openDetail(hero: Hero) {
+    this.app.openDialog(HeroDetailComponent, { data: hero });
   }
 
 }

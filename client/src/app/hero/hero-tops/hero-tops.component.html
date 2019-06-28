@@ -12,10 +12,10 @@
       <button mat-button (click)="like(hero.id)">
         <mat-icon>favorite_outline</mat-icon> {{ hero.like }}
       </button>
-      <button mat-button>
+      <button mat-button (click)="openComment(hero)">
         <mat-icon>comment</mat-icon> {{ 10 }}
       </button>
-      <button mat-button (click)="openDetail(hero.id)">
+      <button mat-button (click)="openDetail(hero)">
         <mat-icon>aspect_ratio</mat-icon>
       </button>
     </mat-card-actions>
