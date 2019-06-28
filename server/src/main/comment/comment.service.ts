@@ -10,7 +10,7 @@ export class CommentService {
       .then(result => result.identifiers[0] ? comment : undefined);
   }
 
-  async getAboutComment(id: number): Promise<Comment[]> {
+  async getReplyOrigin(id: number): Promise<Comment[]> {
     const result: Comment[] = [];
     do {
       const one = await CommentEntity.findOne(id);
