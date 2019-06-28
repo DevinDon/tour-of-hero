@@ -25,7 +25,8 @@ export class CommentService {
   }
 
   getAboutHero(belong: number, offset: number) {
-    return CommentEntity.find({ where: { belong }, take: 10, skip: offset });
+    return CommentEntity
+      .find({ where: { belong }, take: 10, skip: offset, order: { date: 'DESC' } });
   }
 
   async like(id: number): Promise<number> {
