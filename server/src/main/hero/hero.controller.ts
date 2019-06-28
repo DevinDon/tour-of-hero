@@ -11,7 +11,7 @@ export class HeroController {
 
   @POST('/add')
   async add(@RequestBody() hero: Hero): Promise<BaseResponse<Hero>> {
-    const result = await this.service.add(hero);
+    const result = await this.service.add((hero.id = undefined as any, hero));
     return response({
       status: Boolean(result),
       content: result
