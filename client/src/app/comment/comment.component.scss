@@ -9,6 +9,14 @@
 .reply {
   color: $color-gray;
   font-size: x-small !important;
+  justify-content: flex-start;
+  width: fit-content;
+  height: 1rem;
+  line-height: 1rem;
+}
+
+.reply {
+  cursor: pointer;
 }
 
 .content {
