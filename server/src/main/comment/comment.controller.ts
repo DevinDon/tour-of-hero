@@ -25,11 +25,11 @@ export class CommentController {
     });
   }
 
-  @GET('/{{id}}')
-  async getAboutComment(@PathVariable('id') id: number) {
+  @GET('/hero/{{belong}}/{{offset}}')
+  async getAboutHero(@PathVariable('belong') belong: number, @PathVariable('offset') offset: number): Promise<BaseResponse<Comment[]>> {
     return response({
       status: true,
-      content: await this.service.getAboutComment(+id)
+      content: await this.service.getAboutHero(+belong, +offset)
     });
   }
 
