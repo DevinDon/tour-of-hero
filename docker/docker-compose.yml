@@ -38,8 +38,7 @@ services:
     networks:
       - overnet
     volumes:
-      - "./server:/app:ro"
-      - "tour-of-heroes-server:/app/db"
+      - "tour-of-heroes-server:/db:rw"
 
   # Nginx, frontend & backend & hostnet, ports 80 & 443 & 13306(dev) & 16379(dev)
   tour-of-heroes-client:

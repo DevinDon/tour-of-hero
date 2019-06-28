@@ -1,7 +1,7 @@
 {
   "database": {
     "type": "sqlite",
-    "database": "db/sqlite.db",
+    "database": "/db/sqlite.db",
     "entities": [
       "**/*.entity.js"
     ],
