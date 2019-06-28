@@ -10,6 +10,7 @@ import { HeroService } from './hero.service';
 
 @NgModule({
   declarations: [
+    HeroAddComponent,
     HeroDetailComponent,
     HeroListComponent,
     HeroTopsComponent
