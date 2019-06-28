@@ -4,7 +4,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AboutComponent } from './about/about.component';
 import { AppComponent } from './app.component';
+import { CommentComponent } from './comment/comment.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { HeroAddComponent } from './hero/hero-add/hero-add.component';
 import { HeroDetailComponent } from './hero/hero-detail/hero-detail.component';
 import { HeroListComponent } from './hero/hero-list/hero-list.component';
 import { HeroTopsComponent } from './hero/hero-tops/hero-tops.component';
@@ -13,7 +15,6 @@ import { MaterialModule } from './module/material.module';
 import { OtherModule } from './module/other.module';
 import { RoutingModule } from './module/routing.module';
 import { LoadingInterceptor } from './other/loading.interceptor';
-import { HeroAddComponent } from './hero/hero-add/hero-add.component';
 
 @NgModule({
   bootstrap: [AppComponent],
@@ -24,7 +25,8 @@ import { HeroAddComponent } from './hero/hero-add/hero-add.component';
     HeroDetailComponent,
     HeroTopsComponent,
     AboutComponent,
-    HeroAddComponent
+    HeroAddComponent,
+    CommentComponent
   ],
   entryComponents: [],
   imports: [
