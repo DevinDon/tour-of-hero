@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { AppService } from './app.service';
+import { destory } from './other/destory';
 
 interface Route {
   path: string;
@@ -13,7 +15,9 @@ interface Route {
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, OnDestroy {
+
+  private subscriptions: Subscription[] = [];
 
   public routes: Route[] = [{
     path: '/dashboard',
@@ -48,16 +52,22 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.router.events
-      .subscribe(v => {
-        if (v instanceof NavigationEnd) {
-          this.title = this.routes.find(route => route.path === v.urlAfterRedirects);
-        }
-      });
+    this.subscriptions.push(
+      this.router.events
+        .subscribe(v => {
+          if (v instanceof NavigationEnd) {
+            this.title = this.routes.find(route => route.path === v.urlAfterRedirects);
+          }
+        })
+    );
   }
 
   trackByFn(index: number, item: Route) {
     return item.path;
+  }
+
+  ngOnDestroy() {
+    destory(this.subscriptions);
   }
 
 }

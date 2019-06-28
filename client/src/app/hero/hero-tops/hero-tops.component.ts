@@ -28,13 +28,14 @@ export class HeroTopsComponent implements OnInit {
   }
 
   getTop() {
-    this.service.getTop().subscribe(v => {
-      if (v.status) {
-        this.heroes = v.content.sort((a, b) => b.like - a.like);
-      } else {
-        this.app.openBar('Cannot get top heroes data.');
-      }
-    });
+    this.service.getTop()
+      .subscribe(v => {
+        if (v.status) {
+          this.heroes = v.content.sort((a, b) => b.like - a.like);
+        } else {
+          this.app.openBar('Cannot get top heroes data.');
+        }
+      });
   }
 
   like(id: number) {

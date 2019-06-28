@@ -1,13 +1,14 @@
 import { ComponentType } from '@angular/cdk/portal';
-import { Injectable, TemplateRef, isDevMode } from '@angular/core';
+import { Injectable, isDevMode, OnDestroy, TemplateRef } from '@angular/core';
 import { MatDialog, MatDialogConfig, MatSnackBar, MatSnackBarConfig } from '@angular/material';
-import { Subject } from 'rxjs';
+import { Subject, Subscription } from 'rxjs';
 import { auditTime } from 'rxjs/operators';
+import { destory } from './other/destory';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AppService {
+export class AppService implements OnDestroy {
 
   public static API$HOST = 'https://api.don.red/tour-of-heroes';
 
@@ -22,6 +23,8 @@ export class AppService {
     }
   };
 
+  private subscriptions: Subscription[] = [];
+
   constructor(
     public bar: MatSnackBar,
     public dialog: MatDialog
@@ -29,9 +32,11 @@ export class AppService {
     if (isDevMode()) {
       AppService.API$HOST = 'http://localhost:8080';
     }
-    this.subjections.loading.subject
-      .pipe(auditTime(16))
-      .subscribe(v => this.status.loading = v);
+    this.subscriptions.push(
+      this.subjections.loading.subject
+        .pipe(auditTime(16))
+        .subscribe(v => this.status.loading = v)
+    );
   }
 
   busy() {
@@ -76,6 +81,10 @@ export class AppService {
 
   closeDialog() {
     this.dialog.closeAll();
+  }
+
+  ngOnDestroy() {
+    destory(this.subscriptions);
   }
 
 }
