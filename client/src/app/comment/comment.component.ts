@@ -16,7 +16,7 @@ export class CommentComponent implements OnInit {
 
   constructor(
     private app: AppService,
-    @Inject(MAT_DIALOG_DATA) private hero: Hero,
+    @Inject(MAT_DIALOG_DATA) public hero: Hero,
     private service: CommentService
   ) { }
 

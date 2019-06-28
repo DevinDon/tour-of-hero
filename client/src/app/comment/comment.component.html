@@ -1,3 +1,5 @@
+<h4 class="title">Comments of {{ hero.name }}</h4>
+
 <mat-list>
   <mat-list-item *ngFor="let comment of comments">
     <img matListAvatar src="assets/head-1.jpg" />
@@ -9,5 +11,6 @@
     </button>
     <mat-divider></mat-divider>
   </mat-list-item>
-  <p class="end">No more comments.</p>
 </mat-list>
+
+<p class="end">No more comments.</p>

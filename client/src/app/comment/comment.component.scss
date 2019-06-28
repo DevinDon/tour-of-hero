@@ -1,5 +1,10 @@
 @import "../../theme/variable.scss";
 
+.title {
+  margin: 0;
+  text-align: center;
+}
+
 .date {
   color: $color-gray;
   font-size: x-small !important;
