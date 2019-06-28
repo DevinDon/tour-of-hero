@@ -39,7 +39,7 @@ export class CommentComponent implements OnInit {
       })
       .subscribe(result => {
         if (result.status) {
-          this.comments.push(result.content);
+          this.comments.unshift(result.content);
           this.form.get('comment').setValue('');
           this.app.openBar(`Comment successfully.`);
         } else {
