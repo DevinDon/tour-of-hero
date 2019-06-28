@@ -10,6 +10,16 @@ export class CommentService {
       .then(result => result.identifiers[0] ? comment : undefined);
   }
 
+  getAboutHero(belong: number, offset: number): Promise<Comment[]> {
+    return CommentEntity
+      .find({ where: { belong }, take: 10, skip: offset, order: { date: 'DESC' } });
+  }
+
+  async getAboutReply(reply: number, offset: number): Promise<Comment[]> {
+    return CommentEntity
+      .find({ where: { reply }, take: 10, skip: offset, order: { date: 'DESC' } });
+  }
+
   async getReplyOrigin(id: number): Promise<Comment[]> {
     const result: Comment[] = [];
     do {
@@ -22,11 +32,6 @@ export class CommentService {
       }
     } while (result.length < 10 && id);
     return result;
-  }
-
-  getAboutHero(belong: number, offset: number) {
-    return CommentEntity
-      .find({ where: { belong }, take: 10, skip: offset, order: { date: 'DESC' } });
   }
 
   async like(id: number): Promise<number> {
