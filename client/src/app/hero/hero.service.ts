@@ -13,7 +13,9 @@ export class HeroService {
   constructor(
     private app: AppService,
     private http: HttpClient
-  ) { }
+  ) {
+    console.log(`HeroService`);
+  }
 
   add(hero: Hero): Observable<BaseResponse<Hero>> {
     return this.http

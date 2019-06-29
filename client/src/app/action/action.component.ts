@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { AppService } from 'src/app/app.service';
-import { HeroDetailComponent } from '../hero-detail/hero-detail.component';
+import { HeroDetailComponent } from '../hero/hero-detail/hero-detail.component';
 
 @Component({
-  selector: 'app-hero-add',
-  templateUrl: './hero-add.component.html',
-  styleUrls: ['./hero-add.component.scss']
+  selector: 'app-action',
+  templateUrl: './action.component.html',
+  styleUrls: ['./action.component.scss']
 })
-export class HeroAddComponent implements OnInit {
+export class ActionComponent implements OnInit {
 
   constructor(
     public app: AppService

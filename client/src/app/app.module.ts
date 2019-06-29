@@ -4,6 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouteReuseStrategy } from '@angular/router';
 import { AboutComponent } from './about/about.component';
+import { ActionComponent } from './action/action.component';
 import { AppComponent } from './app.component';
 import { AppService } from './app.service';
 import { CommentModule } from './comment/comment.module';
@@ -17,9 +18,10 @@ import { LoadingInterceptor } from './other/loading.interceptor';
 @NgModule({
   bootstrap: [AppComponent],
   declarations: [
+    AboutComponent,
+    ActionComponent,
     AppComponent,
     DashboardComponent,
-    AboutComponent
   ],
   entryComponents: [],
   imports: [
