@@ -1,6 +1,27 @@
-.add {
+.action {
   position: fixed;
   bottom: 1rem;
   right: 1rem;
   z-index: 16;
+}
+
+.overlay {
+  position: relative;
+  width: 9rem;
+  height: 9rem;
+  > button {
+    position: absolute;
+    &:nth-child(1) {
+      bottom: 0;
+      left: 0;
+    }
+    &:nth-child(2) {
+      top: 1.5rem;
+      left: 1.5rem;
+    }
+    &:nth-child(3) {
+      top: 0;
+      right: 0;
+    }
+  }
 }

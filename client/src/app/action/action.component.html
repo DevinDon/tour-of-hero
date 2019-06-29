@@ -1,3 +1,17 @@
-<button mat-fab class="add" color="primary" (click)="add()">
+<button #action mat-fab class="action" color="primary" (click)="display()">
   <mat-icon>add</mat-icon>
 </button>
+
+<ng-template #overlay>
+  <div class="overlay" (click)="display()">
+    <button mat-fab>
+      <mat-icon>add</mat-icon>
+    </button>
+    <button mat-fab>
+      <mat-icon>add</mat-icon>
+    </button>
+    <button mat-fab>
+      <mat-icon>add</mat-icon>
+    </button>
+  </div>
+</ng-template>

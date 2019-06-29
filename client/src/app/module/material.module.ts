@@ -11,6 +11,7 @@ import {
   MatProgressBarModule,
   MatSnackBarModule
 } from '@angular/material';
+import { OverlayModule } from '@angular/cdk/overlay';
 
 @NgModule({
   exports: [
@@ -23,7 +24,8 @@ import {
     MatInputModule,
     MatListModule,
     MatProgressBarModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    OverlayModule
   ]
 })
 export class MaterialModule { }
