@@ -5,7 +5,6 @@ import { MatButton } from '@angular/material';
 import { generate, of, Subscription } from 'rxjs';
 import { concatMap, delay } from 'rxjs/operators';
 import { AppService } from 'src/app/app.service';
-import { HeroDetailComponent } from '../hero/hero-detail/hero-detail.component';
 import { destory } from '../other/destory';
 
 @Component({
@@ -54,8 +53,8 @@ export class ActionComponent implements OnInit, OnDestroy {
     );
   }
 
-  add() {
-    this.app.openDialog(HeroDetailComponent, { data: { id: 0 } });
+  refresh() {
+    this.app.runInit(location.pathname);
   }
 
   display() {

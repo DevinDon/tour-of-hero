@@ -25,7 +25,9 @@ export class HeroListComponent implements OnInit {
     public app: AppService,
     private service: HeroService,
     private route: ActivatedRoute
-  ) { }
+  ) {
+    this.app.setInit('/hero/list', this.ngOnInit.bind(this));
+  }
 
   ngOnInit() {
     this.getCount();

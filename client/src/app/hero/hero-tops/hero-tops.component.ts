@@ -22,6 +22,7 @@ export class HeroTopsComponent implements OnInit {
 
   ngOnInit() {
     this.getTop();
+    this.app.setInit('/hero/tops', this.getTop.bind(this));
   }
 
   trackByFn(index: number, item: Hero) {

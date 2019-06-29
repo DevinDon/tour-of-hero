@@ -25,6 +25,8 @@ export class AppService implements OnDestroy {
 
   private subscriptions: Subscription[] = [];
 
+  private inits: Map<string, () => any> = new Map();
+
   constructor(
     public bar: MatSnackBar,
     public dialog: MatDialog
@@ -81,6 +83,16 @@ export class AppService implements OnDestroy {
 
   closeDialog() {
     this.dialog.closeAll();
+  }
+
+  setInit(component: string, method: () => void) {
+    this.inits.set(component, method);
+  }
+
+  runInit(component: string) {
+    if (this.inits.has(component)) {
+      this.inits.get(component)();
+    }
   }
 
   ngOnDestroy() {
