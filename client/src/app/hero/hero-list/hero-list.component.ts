@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AppService } from 'src/app/app.service';
 import { HeroDetailComponent } from '../hero-detail/hero-detail.component';
-import { HeroService } from '../hero.service';
 import { Hero } from '../hero.model';
+import { HeroService } from '../hero.service';
 
 @Component({
   selector: 'app-hero-list',
@@ -32,6 +32,16 @@ export class HeroListComponent implements OnInit {
   ngOnInit() {
     this.getCount();
     this.getLimit((+this.route.snapshot.paramMap.get('page') - 1) * this.pagination.limit);
+  }
+
+  add() {
+    this.app
+      .openDialog(HeroDetailComponent, { data: { id: 0 } })
+      .afterClosed()
+      .subscribe(() => {
+        this.getCount();
+        this.getLimit();
+      });
   }
 
   getCount() {

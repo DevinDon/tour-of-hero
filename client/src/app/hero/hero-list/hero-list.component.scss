@@ -1,5 +1,10 @@
 @import "../../../theme/variable.scss";
 
+.add {
+  margin-top: 0.5rem;
+  width: 100%;
+}
+
 mat-list {
   > mat-list-item {
     text-decoration: none;
