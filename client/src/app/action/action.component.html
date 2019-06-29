@@ -1,17 +1,17 @@
 <button #action mat-fab class="action" color="primary" (click)="display()">
-  <mat-icon>add</mat-icon>
+  <mat-icon>{{ overlayRef && overlayRef.hasAttached() ? 'clear' : 'more_horiz' }}</mat-icon>
 </button>
 
 <ng-template #overlay>
   <div class="overlay" (click)="display()">
-    <button mat-fab>
-      <mat-icon>add</mat-icon>
+    <button mat-fab (click)="bottom()">
+      <mat-icon>expand_more</mat-icon>
     </button>
-    <button mat-fab>
-      <mat-icon>add</mat-icon>
+    <button mat-fab (click)="add()">
+      <mat-icon>refresh</mat-icon>
     </button>
-    <button mat-fab>
-      <mat-icon>add</mat-icon>
+    <button mat-fab (click)="top()">
+      <mat-icon>expand_less</mat-icon>
     </button>
   </div>
 </ng-template>

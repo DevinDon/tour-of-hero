@@ -2,7 +2,8 @@ import { Overlay, OverlayConfig, OverlayRef } from '@angular/cdk/overlay';
 import { TemplatePortal } from '@angular/cdk/portal';
 import { Component, OnDestroy, OnInit, TemplateRef, ViewChild, ViewContainerRef } from '@angular/core';
 import { MatButton } from '@angular/material';
-import { Subscription } from 'rxjs';
+import { generate, of, Subscription } from 'rxjs';
+import { concatMap, delay } from 'rxjs/operators';
 import { AppService } from 'src/app/app.service';
 import { HeroDetailComponent } from '../hero/hero-detail/hero-detail.component';
 import { destory } from '../other/destory';
@@ -18,7 +19,7 @@ export class ActionComponent implements OnInit, OnDestroy {
 
   @ViewChild('overlay', { static: true }) overlayElement: TemplateRef<any>;
 
-  private overlayRef: OverlayRef;
+  public overlayRef: OverlayRef;
 
   private subscriptions: Subscription[] = [];
 
@@ -29,7 +30,6 @@ export class ActionComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit() {
-    console.log(this.actionElement);
     const strategy = this.overlay
       .position()
       .flexibleConnectedTo(this.actionElement._elementRef.nativeElement)
@@ -64,6 +64,27 @@ export class ActionComponent implements OnInit, OnDestroy {
     } else {
       this.overlayRef.attach(new TemplatePortal(this.overlayElement, this.view));
     }
+  }
+
+  top() {
+    generate(
+      window.pageYOffset,
+      y => y > 0,
+      y => y - 0.05 * y - 10
+    ).pipe(
+      concatMap(y => of(y).pipe(delay(17)))
+    ).subscribe(y => window.scrollTo(0, y));
+  }
+
+  bottom() {
+    const height = document.body.scrollHeight;
+    generate(
+      height,
+      y => y > 0,
+      y => y - 0.02 * y - 10
+    ).pipe(
+      concatMap(y => of(y).pipe(delay(17)))
+    ).subscribe(y => window.scrollTo(0, height - y));
   }
 
   ngOnDestroy() {
