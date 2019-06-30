@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AppService } from 'src/app/app.service';
 import { CommentComponent } from 'src/app/comment/comment.component';
+import { CommentService } from 'src/app/comment/comment.service';
 import { HeroDetailComponent } from '../hero-detail/hero-detail.component';
 import { Hero } from '../hero.model';
 import { HeroService } from '../hero.service';
@@ -17,6 +18,7 @@ export class HeroTopsComponent implements OnInit {
 
   constructor(
     private app: AppService,
+    private commentService: CommentService,
     private service: HeroService
   ) { }
 
@@ -30,7 +32,7 @@ export class HeroTopsComponent implements OnInit {
   }
 
   getCommentCount(belong: number) {
-    this.service
+    this.commentService
       .countComment(belong)
       .subscribe(result => {
         if (result.status) {
@@ -42,7 +44,7 @@ export class HeroTopsComponent implements OnInit {
   }
 
   getCommentCounts(belongs: number[]) {
-    this.service
+    this.commentService
       .countComments(belongs)
       .subscribe(result => {
         if (result.status) {
