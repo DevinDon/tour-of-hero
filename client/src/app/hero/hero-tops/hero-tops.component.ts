@@ -21,10 +21,10 @@ export class HeroTopsComponent implements OnInit {
     private commentService: CommentService,
     private service: HeroService
   ) {
+    this.app.setReload('/hero/tops', this.reload.bind(this));
   }
 
   ngOnInit() {
-    this.app.setInit('/hero/tops', this.reload.bind(this));
     this.reload();
   }
 

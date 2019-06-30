@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 import { AppService } from 'src/app/app.service';
 import { HeroDetailComponent } from '../hero-detail/hero-detail.component';
 import { Hero } from '../hero.model';
@@ -23,12 +22,12 @@ export class HeroListComponent implements OnInit {
 
   constructor(
     public app: AppService,
-    private service: HeroService,
-    private route: ActivatedRoute
-  ) { }
+    private service: HeroService
+  ) {
+    this.app.setReload('/hero/list', this.reload.bind(this));
+  }
 
   ngOnInit() {
-    this.app.setInit('/hero/list', this.reload.bind(this));
     this.reload();
   }
 

@@ -1,6 +1,7 @@
 import { ComponentType } from '@angular/cdk/portal';
 import { Injectable, isDevMode, OnDestroy, TemplateRef } from '@angular/core';
 import { MatDialog, MatDialogConfig, MatSnackBar, MatSnackBarConfig } from '@angular/material';
+import { Router, NavigationEnd } from '@angular/router';
 import { Subject, Subscription } from 'rxjs';
 import { auditTime } from 'rxjs/operators';
 import { destory } from './other/destory';
@@ -29,7 +30,8 @@ export class AppService implements OnDestroy {
 
   constructor(
     public bar: MatSnackBar,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    public router: Router
   ) {
     if (isDevMode()) {
       AppService.API = 'http://localhost:8080';
@@ -38,6 +40,10 @@ export class AppService implements OnDestroy {
       this.subjections.loading.subject
         .pipe(auditTime(16))
         .subscribe(v => this.status.loading = v)
+    );
+    this.subscriptions.push(
+      router.events
+        .subscribe(event => event instanceof NavigationEnd && this.runReload())
     );
   }
 
@@ -85,13 +91,13 @@ export class AppService implements OnDestroy {
     this.dialog.closeAll();
   }
 
-  setInit(component: string, method: () => void) {
-    this.inits.set(component, method);
+  setReload(path: string, method: () => void) {
+    this.inits.set(path, method);
   }
 
-  runInit(component: string) {
-    if (this.inits.has(component)) {
-      this.inits.get(component)();
+  runReload(path: string = this.router.routerState.snapshot.url) {
+    if (this.inits.has(path)) {
+      this.inits.get(path)();
     }
   }
 

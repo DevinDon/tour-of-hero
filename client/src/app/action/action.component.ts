@@ -2,7 +2,6 @@ import { Overlay, OverlayConfig, OverlayRef } from '@angular/cdk/overlay';
 import { TemplatePortal } from '@angular/cdk/portal';
 import { Component, OnDestroy, OnInit, TemplateRef, ViewChild, ViewContainerRef } from '@angular/core';
 import { MatButton } from '@angular/material';
-import { ActivatedRoute } from '@angular/router';
 import { generate, of, Subscription } from 'rxjs';
 import { concatMap, delay } from 'rxjs/operators';
 import { AppService } from 'src/app/app.service';
@@ -26,7 +25,6 @@ export class ActionComponent implements OnInit, OnDestroy {
   constructor(
     public app: AppService,
     private overlay: Overlay,
-    private route: ActivatedRoute,
     private view: ViewContainerRef
   ) { }
 
@@ -53,14 +51,6 @@ export class ActionComponent implements OnInit, OnDestroy {
         .backdropClick()
         .subscribe(() => this.display())
     );
-  }
-
-  refresh() {
-    if (location.pathname.includes('/hero/list')) {
-      this.app.runInit('/hero/list');
-    } else if (location.pathname.includes('/hero/tops')) {
-      this.app.runInit('/hero/tops');
-    }
   }
 
   display() {
