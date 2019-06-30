@@ -9,7 +9,7 @@ export class CommentController {
   @Inject()
   private service!: CommentService;
 
-  @POST('/add')
+  @POST('/')
   async add(@RequestBody() comment: Comment): Promise<BaseResponse<Comment>> {
     comment.id = undefined as any;
     comment.date = Date.now();
@@ -49,7 +49,7 @@ export class CommentController {
     });
   }
 
-  @GET('/{{reply}}/{{offset}}')
+  @GET('/reply/{{reply}}/{{offset}}')
   async getAboutReply(@PathVariable('reply') reply: number, @PathVariable('offset') offset: number) {
     const result = await this.service.getAboutReply(reply, offset);
     return response({
