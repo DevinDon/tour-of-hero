@@ -4,9 +4,6 @@ import { Hero, HeroEntity } from './hero.entity';
 @Service()
 export class HeroService {
 
-  private liked = 0;
-  private commented = 0;
-
   add(hero: Hero): Promise<Hero | undefined> {
     return HeroEntity
       .insert(hero)
@@ -59,21 +56,7 @@ export class HeroService {
       .execute();
     return HeroEntity
       .findOne(id)
-      .then(result => result ? result.like : -1);
-  }
-
-  async comment(id: number, message: string) {
-    this.commented++;
-  }
-
-  async dashboard() {
-    if (this.commented === 0) {
-      // this.commented = await HeroEntity
-    }
-    if (this.liked === 0) {
-      this.liked = await HeroEntity.count();
-    }
-    const total = await HeroEntity.count();
+      .then(result => result ? result.like : undefined);
   }
 
 }

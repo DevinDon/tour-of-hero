@@ -3,13 +3,13 @@ import { BaseResponse, response } from '../model/response.model';
 import { Hero } from './hero.entity';
 import { HeroService } from './hero.service';
 
-@Controller('/')
+@Controller('/hero')
 export class HeroController {
 
   @Inject()
   private service!: HeroService;
 
-  @POST('/add')
+  @POST('/')
   async add(@RequestBody() hero: Hero): Promise<BaseResponse<Hero>> {
     const result = await this.service.add((hero.id = undefined as any, hero));
     return response({
@@ -26,7 +26,7 @@ export class HeroController {
     });
   }
 
-  @DELETE('/delete/{{id}}')
+  @DELETE('/{{id}}')
   async delete(@PathVariable('id') id: number): Promise<BaseResponse> {
     const result = await this.service.delete(+id);
     return response({
@@ -35,7 +35,7 @@ export class HeroController {
     });
   }
 
-  @DELETE('/delete/more')
+  @DELETE('/more')
   async deleteMore(@PathQuery('ids') ids: string | undefined): Promise<BaseResponse<number>> {
     if (ids) {
       const arr: number[] = ids.split(',').map(v => +v);
@@ -49,7 +49,7 @@ export class HeroController {
     }
   }
 
-  @GET('/get/{{id}}')
+  @GET('/{{id}}')
   async get(@PathVariable('id') id: number) {
     const hero = await this.service.get(+id);
     return response({
@@ -58,7 +58,7 @@ export class HeroController {
     });
   }
 
-  @GET('/get/{{offset}}/limit/{{limit}}')
+  @GET('/{{offset}}/limit/{{limit}}')
   async getLimit(@PathVariable('offset') offset: number, @PathVariable('limit') limit: number) {
     return response({
       status: true,
@@ -66,7 +66,7 @@ export class HeroController {
     });
   }
 
-  @GET('/get/more')
+  @GET('/more')
   async getMore(@PathQuery('ids') ids: string | undefined) {
     if (ids) {
       const arr: number[] = ids.split(',').map(v => +v);
@@ -83,8 +83,8 @@ export class HeroController {
     }
   }
 
-  @GET('/get/top')
-  @GET('/get/top/{{total}}')
+  @GET('/top')
+  @GET('/top/{{total}}')
   async getTop(@PathVariable('total') total: number = 5) {
     const result = await this.service.getTop(total);
     return response({
@@ -93,7 +93,7 @@ export class HeroController {
     });
   }
 
-  @GET('/get/all')
+  @GET('/all')
   async getAll() {
     const result = await this.service.getAll();
     return response({
@@ -102,7 +102,7 @@ export class HeroController {
     });
   }
 
-  @PUT('/update/{{id}}')
+  @PUT('/{{id}}')
   async updateOne(@PathVariable('id') id: number, @RequestBody() hero: Hero) {
     const result = await this.service.update(+id, hero);
     return response({
@@ -115,7 +115,7 @@ export class HeroController {
   async like(@PathVariable('id') id: number) {
     const result = await this.service.like(+id);
     return response({
-      status: Boolean(result),
+      status: result !== undefined,
       content: result
     });
   }
