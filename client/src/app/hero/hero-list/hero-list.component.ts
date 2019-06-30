@@ -25,23 +25,23 @@ export class HeroListComponent implements OnInit {
     public app: AppService,
     private service: HeroService,
     private route: ActivatedRoute
-  ) {
-    this.app.setInit('/hero/list', this.ngOnInit.bind(this));
-  }
+  ) { }
 
   ngOnInit() {
+    this.reload();
+    this.app.setInit('/hero/list', this.reload.bind(this));
+  }
+
+  reload() {
     this.getCount();
-    this.getLimit((+this.route.snapshot.paramMap.get('page') - 1) * this.pagination.limit);
+    this.getLimit();
   }
 
   add() {
     this.app
       .openDialog(HeroDetailComponent, { data: { id: 0 } })
       .afterClosed()
-      .subscribe(() => {
-        this.getCount();
-        this.getLimit();
-      });
+      .subscribe(() => this.reload());
   }
 
   getCount() {
@@ -70,10 +70,6 @@ export class HeroListComponent implements OnInit {
       });
   }
 
-  trackByFn(index: number, item: Hero) {
-    return item.id;
-  }
-
   delete(id: number) {
     this.service
       .delete(id)
@@ -100,6 +96,10 @@ export class HeroListComponent implements OnInit {
   next() {
     this.getCount();
     this.getLimit(this.pagination.offset += this.pagination.limit);
+  }
+
+  trackByFn(index: number, item: Hero) {
+    return item.id;
   }
 
 }
