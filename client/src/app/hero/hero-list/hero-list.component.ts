@@ -28,8 +28,8 @@ export class HeroListComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.reload();
     this.app.setInit('/hero/list', this.reload.bind(this));
+    this.reload();
   }
 
   reload() {
