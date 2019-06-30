@@ -10,7 +10,7 @@ import { destory } from './other/destory';
 })
 export class AppService implements OnDestroy {
 
-  public static API$HOST = 'https://api.don.red/tour-of-heroes';
+  public static API = 'https://api.don.red/tour-of-heroes';
 
   public status = {
     loading: 0
@@ -32,7 +32,7 @@ export class AppService implements OnDestroy {
     public dialog: MatDialog
   ) {
     if (isDevMode()) {
-      AppService.API$HOST = 'http://localhost:8080';
+      AppService.API = 'http://localhost:8080';
     }
     this.subscriptions.push(
       this.subjections.loading.subject

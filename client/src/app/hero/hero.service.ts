@@ -10,64 +10,67 @@ import { Hero } from './hero.model';
 })
 export class HeroService {
 
+  private API$HERO: string;
+
   constructor(
-    private app: AppService,
     private http: HttpClient
-  ) { }
+  ) {
+    this.API$HERO = AppService.API + '/hero';
+  }
 
   add(hero: Hero): Observable<BaseResponse<Hero>> {
     return this.http
-      .post<BaseResponse<Hero>>(AppService.API$HOST + '/add', hero);
+      .post<BaseResponse<Hero>>(this.API$HERO, hero);
   }
 
   count(): Observable<BaseResponse<number>> {
     return this.http
-      .get<BaseResponse<number>>(AppService.API$HOST + '/count');
+      .get<BaseResponse<number>>(this.API$HERO + '/count');
   }
 
   countComment(belong: number) {
     return this.http
-      .get<BaseResponse<number>>(AppService.API$HOST + `/comment/count/${belong}`);
+      .get<BaseResponse<number>>(this.API$HERO + `/comment/count/${belong}`);
   }
 
   countComments(belongs: number[]) {
     return this.http
-      .get<BaseResponse<number[]>>(AppService.API$HOST + `/comment/counts/${belongs.join(',')}`);
+      .get<BaseResponse<number[]>>(this.API$HERO + `/comment/counts/${belongs.join(',')}`);
   }
 
   getAll(): Observable<BaseResponse<Hero[]>> {
     return this.http
-      .get<BaseResponse<Hero[]>>(AppService.API$HOST + '/get/all');
+      .get<BaseResponse<Hero[]>>(this.API$HERO + '/all');
   }
 
   getLimit(offset: number, limit: number): Observable<BaseResponse<Hero[]>> {
     return this.http
-      .get<BaseResponse<Hero[]>>(AppService.API$HOST + `/get/${offset}/limit/${limit}`);
+      .get<BaseResponse<Hero[]>>(this.API$HERO + `/${offset}/limit/${limit}`);
   }
 
   getTop(total: number = 4): Observable<BaseResponse<Hero[]>> {
     return this.http
-      .get<BaseResponse<Hero[]>>(AppService.API$HOST + '/get/top');
+      .get<BaseResponse<Hero[]>>(this.API$HERO + '/top');
   }
 
   getOne(id: number): Observable<BaseResponse<Hero>> {
     return this.http
-      .get<BaseResponse<Hero>>(AppService.API$HOST + `/get/${id}`);
+      .get<BaseResponse<Hero>>(this.API$HERO + `/${id}`);
   }
 
   update(id: number, hero: Partial<Hero>): Observable<BaseResponse<Hero>> {
     return this.http
-      .put<BaseResponse<Hero>>(AppService.API$HOST + `/update/${id}`, hero);
+      .put<BaseResponse<Hero>>(this.API$HERO + `/${id}`, hero);
   }
 
   like(id: number): Observable<BaseResponse<number>> {
     return this.http
-      .post<BaseResponse<number>>(AppService.API$HOST + `/like/${id}`, undefined);
+      .post<BaseResponse<number>>(this.API$HERO + `/like/${id}`, undefined);
   }
 
   delete(id: number): Observable<BaseResponse> {
     return this.http
-      .delete<BaseResponse>(AppService.API$HOST + `/delete/${id}`);
+      .delete<BaseResponse>(this.API$HERO + `/${id}`);
   }
 
 }

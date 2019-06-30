@@ -16,17 +16,17 @@ export class CommentService {
 
   add(comment: Pick<Comment, 'belong' | 'content' | 'reply'>) {
     return this.http
-      .post<BaseResponse<Comment>>(AppService.API$HOST + '/comment/add', comment);
+      .post<BaseResponse<Comment>>(AppService.API + '/comment/add', comment);
   }
 
   getAboutHero(belong: number, offset: number) {
     return this.http
-      .get<BaseResponse<Comment[]>>(AppService.API$HOST + `/comment/hero/${belong}/${offset}`);
+      .get<BaseResponse<Comment[]>>(AppService.API + `/comment/hero/${belong}/${offset}`);
   }
 
   getAboutReply(reply: number, offset: number) {
     return this.http
-      .get<BaseResponse<Comment[]>>(AppService.API$HOST + `/comment/${reply}/${offset}`);
+      .get<BaseResponse<Comment[]>>(AppService.API + `/comment/${reply}/${offset}`);
   }
 
 }
