@@ -4,6 +4,7 @@ import { Component, OnDestroy, OnInit, TemplateRef, ViewChild, ViewContainerRef 
 import { MatButton } from '@angular/material';
 import { generate, of, Subscription } from 'rxjs';
 import { concatMap, delay } from 'rxjs/operators';
+import { AppService } from '../app.service';
 import { destory } from '../other/destory';
 
 @Component({
@@ -22,6 +23,7 @@ export class ActionComponent implements OnInit, OnDestroy {
   private subscriptions: Subscription[] = [];
 
   constructor(
+    public app: AppService,
     private overlay: Overlay,
     private view: ViewContainerRef
   ) { }
