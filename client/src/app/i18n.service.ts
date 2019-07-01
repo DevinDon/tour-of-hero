@@ -80,8 +80,8 @@ export class I18NService {
   constructor(
     private http: HttpClient
   ) {
-    sessionStorage.setItem(KEYS.language, this.language = (sessionStorage.getItem(KEYS.language) || 'zh-Hans') as Languages);
-    console.log(sessionStorage.getItem(KEYS.language));
+    localStorage.setItem(KEYS.language, this.language = (localStorage.getItem(KEYS.language) || 'zh-Hans') as Languages);
+    console.log(localStorage.getItem(KEYS.language));
   }
 
   get(component: string, id: string) {
@@ -89,8 +89,8 @@ export class I18NService {
   }
 
   setLanguage(language: Languages) {
-    sessionStorage.setItem(KEYS.language, this.language = language);
-    console.log(sessionStorage.getItem(KEYS.language));
+    localStorage.setItem(KEYS.language, this.language = language);
+    console.log(localStorage.getItem(KEYS.language));
     this.loadFunctions.forEach(fn => fn());
   }
 
