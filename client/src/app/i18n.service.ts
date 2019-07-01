@@ -80,7 +80,7 @@ export class I18NService {
   constructor(
     private http: HttpClient
   ) {
-    localStorage.setItem(KEYS.language, this.language = (localStorage.getItem(KEYS.language) || 'zh-Hans') as Languages);
+    localStorage.setItem(KEYS.language, this.language = (localStorage.getItem(KEYS.language) || 'en-US') as Languages);
   }
 
   get(component: string, id: string) {
