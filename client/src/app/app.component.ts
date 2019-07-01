@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { AppService } from './app.service';
+import { I18NService } from './i18n.service';
 import { destory } from './other/destory';
 
 interface Route {
@@ -19,47 +20,42 @@ export class AppComponent implements OnInit, OnDestroy {
 
   private subscriptions: Subscription[] = [];
 
-  public routes: Route[] = [{
-    path: '/dashboard',
-    icon: 'dashboard',
-    title: 'Dashboard'
-  },
-  {
-    path: '/hero/list',
-    icon: 'format_list_numbered',
-    title: 'Hero List'
-  },
-  {
-    path: '/hero/tops',
-    icon: 'whatshot',
-    title: 'Tops Hero'
-  },
-  {
-    path: '/about',
-    icon: 'info_outline',
-    title: 'About'
-  }];
+  public routes: Route[];
 
-  public title: Route = {
-    path: '/',
-    icon: '',
-    title: 'Tour of Heroes'
-  };
+  public title = 0;
 
   constructor(
     public app: AppService,
+    private i18n: I18NService,
     private router: Router
-  ) { }
+  ) {
+    this.loadLanguage();
+    i18n.loadFunctions.push(this.loadLanguage.bind(this));
+  }
 
   ngOnInit() {
     this.subscriptions.push(
       this.router.events
         .subscribe(v => {
           if (v instanceof NavigationEnd) {
-            this.title = this.routes.find(route => route.path === v.urlAfterRedirects);
+            this.title = this.routes.findIndex(route => route.path === v.urlAfterRedirects);
           }
         })
     );
+  }
+
+  loadLanguage() {
+    this.routes = this.i18n.get('AppComponent', 'routes');
+  }
+
+  testen() {
+    this.i18n.setLanguage('en-US');
+    console.log(this.routes);
+  }
+
+  testzh() {
+    this.i18n.setLanguage('zh-Hans');
+    console.log(this.routes);
   }
 
   trackByFn(index: number, item: Route) {

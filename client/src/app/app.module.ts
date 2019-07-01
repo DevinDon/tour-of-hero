@@ -10,6 +10,7 @@ import { AppService } from './app.service';
 import { CommentModule } from './comment/comment.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { HeroModule } from './hero/hero.module';
+import { I18NService } from './i18n.service';
 import { MaterialModule } from './module/material.module';
 import { OtherModule } from './module/other.module';
 import { RouteReuseHandler, RoutingModule } from './module/routing.module';
@@ -36,7 +37,8 @@ import { LoadingInterceptor } from './other/loading.interceptor';
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true },
     { provide: RouteReuseStrategy, useClass: RouteReuseHandler },
-    AppService
+    AppService,
+    I18NService
   ]
 })
 export class AppModule { }
