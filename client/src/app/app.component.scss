@@ -19,15 +19,17 @@
     z-index: 32;
   }
   .mat-expansion-panel {
-    position: sticky;
+    position: fixed;
     top: 0;
     z-index: 30;
+    width: 100vw;
     .selected {
       background-color: $color-black !important;
       color: $color-white !important;
     }
   }
   .outlet {
+    margin-top: 3rem;
     padding: 0 1rem;
   }
 }

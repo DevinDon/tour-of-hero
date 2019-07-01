@@ -43,9 +43,9 @@ export class HeroDetailComponent implements OnInit {
         : this.service.update(this.formGroup.get('id').value, this.hero)
     ).subscribe(v => {
       if (v.status) {
-        this.app.openBar(`Hero ${this.hero.id}: ${this.hero.name} saved successfully.`);
+        this.app.openBar(`Hero ${v.content.id}: ${this.hero.name} saved successfully.`);
       } else {
-        this.app.openBar(`Hero ${this.hero.id}: ${this.hero.name} saved failed.`);
+        this.app.openBar(`Hero ${this.hero.name} saved failed.`);
       }
       this.dialog.close();
     });
