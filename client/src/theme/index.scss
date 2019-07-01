@@ -6,7 +6,7 @@
 @import url(https://cdn.jsdelivr.net/gh/tonsky/FiraCode@1.206/distr/fira_code.css);
 
 // Set font family.
-@include mat-core(mat-typography-config($font-family: '"Consolas", "微软雅黑", "黑体", sans-serif'));
+@include mat-core(mat-typography-config($font-family: '"Fira Code", "Consolas", "微软雅黑", "黑体", sans-serif'));
 
 // Set global styles.
 body {

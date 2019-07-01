@@ -7,7 +7,7 @@ const KEYS = {
   language: 'language'
 };
 
-const LanguageResource = {
+export const LanguageResource = {
   'en-US': {
     AppComponent: {
       routes: [{
