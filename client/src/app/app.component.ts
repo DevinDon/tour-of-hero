@@ -48,16 +48,6 @@ export class AppComponent implements OnInit, OnDestroy {
     this.routes = this.i18n.get('AppComponent', 'routes');
   }
 
-  testen() {
-    this.i18n.setLanguage('en-US');
-    console.log(this.routes);
-  }
-
-  testzh() {
-    this.i18n.setLanguage('zh-Hans');
-    console.log(this.routes);
-  }
-
   trackByFn(index: number, item: Route) {
     return item.path;
   }

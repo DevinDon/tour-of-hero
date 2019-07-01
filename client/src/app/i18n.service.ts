@@ -81,7 +81,6 @@ export class I18NService {
     private http: HttpClient
   ) {
     localStorage.setItem(KEYS.language, this.language = (localStorage.getItem(KEYS.language) || 'zh-Hans') as Languages);
-    console.log(localStorage.getItem(KEYS.language));
   }
 
   get(component: string, id: string) {
@@ -90,7 +89,6 @@ export class I18NService {
 
   setLanguage(language: Languages) {
     localStorage.setItem(KEYS.language, this.language = language);
-    console.log(localStorage.getItem(KEYS.language));
     this.loadFunctions.forEach(fn => fn());
   }
 
