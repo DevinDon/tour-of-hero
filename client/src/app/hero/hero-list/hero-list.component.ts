@@ -18,6 +18,7 @@ export class HeroListComponent implements OnInit {
     current: 0,
     total: 0
   };
+
   public heroes: Hero[] = [];
 
   constructor(
