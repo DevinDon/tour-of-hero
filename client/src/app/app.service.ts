@@ -11,7 +11,7 @@ import { destory } from './other/destory';
 })
 export class AppService implements OnDestroy {
 
-  public static API = 'https://api.don.red/tour-of-heroes';
+  public static API = 'https://api.demo.don.red/tour-of-heroes';
 
   public status = {
     loading: 0
