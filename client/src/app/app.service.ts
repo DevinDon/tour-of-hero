@@ -11,7 +11,7 @@ import { destory } from './other/destory';
 })
 export class AppService implements OnDestroy {
 
-  public static API = '/api';
+  public static API = 'api';
 
   public status = {
     loading: 0
